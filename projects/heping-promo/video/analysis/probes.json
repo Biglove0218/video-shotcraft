@@ -1,31 +1,36 @@
 [
  {
-  "src": "anvil-hit.wav",
-  "from": 35,
-  "label": "stamp",
+  "src": "../../../analysis/anvil-probe.wav",
+  "from": 34,
+  "trimS": 0.0,
+  "label": "stamp-real",
   "target": 36
  },
  {
-  "src": "shutter.wav",
-  "from": 499,
+  "src": "261098__magedu__camera_shutter_release_dslr.wav",
+  "from": 497,
+  "trimS": 0.13333333333333333,
   "label": "shutter1",
   "target": 500
  },
  {
-  "src": "shutter.wav",
-  "from": 521,
+  "src": "261098__magedu__camera_shutter_release_dslr.wav",
+  "from": 519,
+  "trimS": 0.13333333333333333,
   "label": "shutter2",
   "target": 522
  },
  {
-  "src": "shutter.wav",
-  "from": 539,
+  "src": "261098__magedu__camera_shutter_release_dslr.wav",
+  "from": 537,
+  "trimS": 0.13333333333333333,
   "label": "shutter3",
   "target": 540
  },
  {
-  "src": "impact-deep.wav",
-  "from": 811,
+  "src": "377303__meijstroaudio__deep-cinematic-impact.wav",
+  "from": 818,
+  "trimS": 0.0,
   "label": "impact",
   "target": 820
  }

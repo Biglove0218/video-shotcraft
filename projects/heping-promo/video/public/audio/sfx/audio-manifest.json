@@ -1,5 +1,319 @@
 {
- "note": "Freesound 站点对本云端环境返回 403（反爬拦截），按用户确认的分镜动作程序化合成拟音；本地可替换为 Freesound 实录后重测峰值。",
+ "note": "SFX 来源：Freesound 实录（用户上传）+ 程序化拟音（Freesound 站点对本云端环境返回 403 时生成，仍在使用的见 used_in_film）。",
+ "freesound": [
+  {
+   "file": "137950__benboncan__wheel-lathe.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 137950,
+   "author": "benboncan",
+   "title": "wheel-lathe",
+   "page": "https://freesound.org/s/137950/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": false,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "d9e411fad2866465b73ad152e1376ff2ef41867e2ab20c10b5eb0afaa5d1e569",
+   "analysis": {
+    "codec": "pcm_s16le",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 72.426396,
+    "sample_peak_dbfs": -2.994,
+    "rms_dbfs": -19.297,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 3.545,
+    "active_start_seconds": 0.52,
+    "active_end_seconds": 72.14,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "160545__keykrusher__lathe-atlas-6inch-idling.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 160545,
+   "author": "keykrusher",
+   "title": "lathe-atlas-6inch-idling",
+   "page": "https://freesound.org/s/160545/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "1d7ca8f5dfb2c85dda3bb6b99f0557380cb1c3f4807df8313c5f0baeebe2237e",
+   "analysis": {
+    "codec": "pcm_s16le",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 45.747979,
+    "sample_peak_dbfs": -3.724,
+    "rms_dbfs": -29.899,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 0.085,
+    "active_start_seconds": 0.02,
+    "active_end_seconds": 45.24,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "17556__incarnadine__elements_fire.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 17556,
+   "author": "incarnadine",
+   "title": "elements_fire",
+   "page": "https://freesound.org/s/17556/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "62d84d9c996f4a5f81d108c6a585fe48bbbd6acc6ad26b8ad9dc859c47f96e21",
+   "analysis": {
+    "codec": "pcm_s16le",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 5.0,
+    "sample_peak_dbfs": -17.496,
+    "rms_dbfs": -42.876,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 1.755,
+    "active_start_seconds": 0.0,
+    "active_end_seconds": 5.0,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "260626__soundeffectspodcast_com__hammer-anvil-hit-1.mp3",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 260626,
+   "author": "soundeffectspodcast_com",
+   "title": "hammer-anvil-hit-1",
+   "page": "https://freesound.org/s/260626/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "2fcd3bd0cfb7fe20403f77447db1921e18fe773139b805fbef6fc218785c38c1",
+   "analysis": {
+    "codec": "mp3",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 0.679188,
+    "sample_peak_dbfs": 0.933,
+    "rms_dbfs": -26.468,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 0.035,
+    "active_start_seconds": 0.02,
+    "active_end_seconds": 0.67,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "261098__magedu__camera_shutter_release_dslr.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 261098,
+   "author": "magedu",
+   "title": "camera_shutter_release_dslr",
+   "page": "https://freesound.org/s/261098/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "029270f20afe9ef1e66f46bcbeb4ad55f8484e4fec442fcd0d97804a07c6b6f2",
+   "analysis": {
+    "codec": "pcm_s24le",
+    "sample_rate": 96000,
+    "channels": 1,
+    "duration_seconds": 1.071208,
+    "sample_peak_dbfs": -5.044,
+    "rms_dbfs": -32.634,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 0.675,
+    "active_start_seconds": 0.07,
+    "active_end_seconds": 1.071208,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "364660__original_sound__whoosh-simpler.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 364660,
+   "author": "original_sound",
+   "title": "whoosh-simpler",
+   "page": "https://freesound.org/s/364660/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "eae05441346cbcb9b500aa150ee70bdba6bc426b862a322fac84dc52990988e8",
+   "analysis": {
+    "codec": "pcm_s16le",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 2.0,
+    "sample_peak_dbfs": -1.555,
+    "rms_dbfs": -21.318,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 0.125,
+    "active_start_seconds": 0.11,
+    "active_end_seconds": 1.44,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "377303__meijstroaudio__deep-cinematic-impact.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 377303,
+   "author": "meijstroaudio",
+   "title": "deep-cinematic-impact",
+   "page": "https://freesound.org/s/377303/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "f5d36a50eed118c33f8ceb54d28872b350b8c8dfc4a2ec47abb3adeb453f6c25",
+   "analysis": {
+    "codec": "pcm_f32le",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 2.0,
+    "sample_peak_dbfs": -0.0,
+    "rms_dbfs": -21.584,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 0.035,
+    "active_start_seconds": 0.0,
+    "active_end_seconds": 1.58,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "382962__mattruthsound__drillpress-chuck-spinning-metalic-metal-tool-workshop-2.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 382962,
+   "author": "mattruthsound",
+   "title": "drillpress-chuck-spinning-metalic-metal-tool-workshop-2",
+   "page": "https://freesound.org/s/382962/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "692a22d1be72e29d5754109022e3639db484863a3b3cace07c5709168222de5b",
+   "analysis": {
+    "codec": "pcm_s24le",
+    "sample_rate": 96000,
+    "channels": 1,
+    "duration_seconds": 6.486896,
+    "sample_peak_dbfs": 0.061,
+    "rms_dbfs": -32.496,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 2.155,
+    "active_start_seconds": 0.01,
+    "active_end_seconds": 6.28,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "530448__mellau__whoosh-short-5.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 530448,
+   "author": "mellau",
+   "title": "whoosh-short-5",
+   "page": "https://freesound.org/s/530448/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "637beb0496d36de6ef03ad0da9224ea9d26fb37cbfbec804e2a9438a9eff178a",
+   "analysis": {
+    "codec": "pcm_s16le",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 1.0,
+    "sample_peak_dbfs": -0.26,
+    "rms_dbfs": -19.756,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 0.255,
+    "active_start_seconds": 0.09,
+    "active_end_seconds": 0.5,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "783833__chungus43a__milling-machine-cutting-metal.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 783833,
+   "author": "chungus43a",
+   "title": "milling-machine-cutting-metal",
+   "page": "https://freesound.org/s/783833/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "64275ddb7673358e126d9c8d80fc4e9b9d7a216a5a05e0d6a5ac1b5752329618",
+   "analysis": {
+    "codec": "pcm_s16le",
+    "sample_rate": 48000,
+    "channels": 2,
+    "duration_seconds": 4.8,
+    "sample_peak_dbfs": -20.706,
+    "rms_dbfs": -34.293,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 1.225,
+    "active_start_seconds": 0.0,
+    "active_end_seconds": 4.8,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "855309__gammagool__metal-taps.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 855309,
+   "author": "gammagool",
+   "title": "metal-taps",
+   "page": "https://freesound.org/s/855309/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "7b31479ecdb222e95db0c0502db8d91ef9c5913080fa5a894ee9f9a6d5fda399",
+   "analysis": {
+    "codec": "pcm_s16le",
+    "sample_rate": 48000,
+    "channels": 2,
+    "duration_seconds": 3.812458,
+    "sample_peak_dbfs": 0.0,
+    "rms_dbfs": -21.97,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 0.015,
+    "active_start_seconds": 0.0,
+    "active_end_seconds": 3.72,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  },
+  {
+   "file": "859482__beaconstudio__cinematic-riser-3-subtle.wav",
+   "source": "Freesound（用户在本地浏览器下载后上传到仓库）",
+   "freesound_id": 859482,
+   "author": "beaconstudio",
+   "title": "cinematic-riser-3-subtle",
+   "page": "https://freesound.org/s/859482/",
+   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "used_in_film": true,
+   "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
+   "sha256": "ad30572bcea378b940fa5714094135a32814ed8bad998fb1976d1bb0b7aad81e",
+   "analysis": {
+    "codec": "pcm_s24le",
+    "sample_rate": 44100,
+    "channels": 2,
+    "duration_seconds": 3.0,
+    "sample_peak_dbfs": -1.732,
+    "rms_dbfs": -19.407,
+    "energy_window_seconds": 0.01,
+    "energy_peak_seconds": 2.285,
+    "active_start_seconds": 0.33,
+    "active_end_seconds": 2.35,
+    "activity_threshold_db_below_peak_rms": -40
+   },
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+  }
+ ],
  "files": [
   {
    "file": "fire-crackle.wav",
@@ -8,7 +322,8 @@
    "duration_s": 5.0,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 2.0158,
-   "sha256": "b3bbc48de7e2fd9e63f9ae8c7975a60bdf0d3bd5683ea9ebfd28fffbdae473c2"
+   "sha256": "b3bbc48de7e2fd9e63f9ae8c7975a60bdf0d3bd5683ea9ebfd28fffbdae473c2",
+   "used_in_film": false
   },
   {
    "file": "anvil-hit.wav",
@@ -17,7 +332,8 @@
    "duration_s": 3.7,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.0067,
-   "sha256": "272fb24a1dc3dedea2a6a7f492250e95a11ea2fb5c7f3edcf9fbacc6fc9238d1"
+   "sha256": "272fb24a1dc3dedea2a6a7f492250e95a11ea2fb5c7f3edcf9fbacc6fc9238d1",
+   "used_in_film": true
   },
   {
    "file": "leak-swell.wav",
@@ -26,7 +342,8 @@
    "duration_s": 2.6,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.9016,
-   "sha256": "6df433c7ef30b4ec14561a67d2ca13f8ae7cd44ddd60e71fca8f4efe3d9992fc"
+   "sha256": "6df433c7ef30b4ec14561a67d2ca13f8ae7cd44ddd60e71fca8f4efe3d9992fc",
+   "used_in_film": false
   },
   {
    "file": "furnace-roar.wav",
@@ -35,7 +352,8 @@
    "duration_s": 2.4,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.0616,
-   "sha256": "3fd045fa2aec9ee9ee6df523d310e6e49a0aaeaa1473c644523d7677e55627bf"
+   "sha256": "3fd045fa2aec9ee9ee6df523d310e6e49a0aaeaa1473c644523d7677e55627bf",
+   "used_in_film": true
   },
   {
    "file": "lathe-cut.wav",
@@ -44,7 +362,8 @@
    "duration_s": 2.8,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 1.749,
-   "sha256": "1b2920a6508efae68388f174670ced4cebe635380ccd029dfe54bcaff5d91c6a"
+   "sha256": "1b2920a6508efae68388f174670ced4cebe635380ccd029dfe54bcaff5d91c6a",
+   "used_in_film": false
   },
   {
    "file": "drill-a.wav",
@@ -53,7 +372,8 @@
    "duration_s": 0.82,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.255,
-   "sha256": "b28bf370f3f9de87a95fb32bda0d386e66e21fa9afaac49d25d54a150a7b9b46"
+   "sha256": "b28bf370f3f9de87a95fb32bda0d386e66e21fa9afaac49d25d54a150a7b9b46",
+   "used_in_film": false
   },
   {
    "file": "drill-b.wav",
@@ -62,7 +382,8 @@
    "duration_s": 0.82,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.255,
-   "sha256": "2f5390d753b284d88bf013a87f19f5b1bebcdde2717ba6f9c1dc10e81271889d"
+   "sha256": "2f5390d753b284d88bf013a87f19f5b1bebcdde2717ba6f9c1dc10e81271889d",
+   "used_in_film": false
   },
   {
    "file": "whoosh-fast.wav",
@@ -71,7 +392,8 @@
    "duration_s": 0.7,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.3905,
-   "sha256": "76666548a51eb5f5c4e8334edac077b0a31c99cf855aa90de672bc1ad79fa955"
+   "sha256": "76666548a51eb5f5c4e8334edac077b0a31c99cf855aa90de672bc1ad79fa955",
+   "used_in_film": false
   },
   {
    "file": "whoosh-soft.wav",
@@ -80,7 +402,8 @@
    "duration_s": 1.2,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.7205,
-   "sha256": "234aec11e02344fe0ba09979f978d1b026d764e7cb610aaa761359cec7365854"
+   "sha256": "234aec11e02344fe0ba09979f978d1b026d764e7cb610aaa761359cec7365854",
+   "used_in_film": false
   },
   {
    "file": "shutter.wav",
@@ -89,7 +412,8 @@
    "duration_s": 0.55,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.005,
-   "sha256": "6f2f55b5ffb209c82fce542d6967f651ae1fbc0abe1980d11b72aba349a37083"
+   "sha256": "6f2f55b5ffb209c82fce542d6967f651ae1fbc0abe1980d11b72aba349a37083",
+   "used_in_film": false
   },
   {
    "file": "tick.wav",
@@ -98,7 +422,8 @@
    "duration_s": 0.12,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.0058,
-   "sha256": "6ead4a47f958f23c99fa06284e5ac53b9994e14b4d2155cf9f5c03b544426444"
+   "sha256": "6ead4a47f958f23c99fa06284e5ac53b9994e14b4d2155cf9f5c03b544426444",
+   "used_in_film": false
   },
   {
    "file": "metal-tap-a.wav",
@@ -107,7 +432,8 @@
    "duration_s": 1.5,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.0824,
-   "sha256": "470f23e22d334c6dae18639dc3976634e3f4bc1161c43e5d7a96a76f797c3d19"
+   "sha256": "470f23e22d334c6dae18639dc3976634e3f4bc1161c43e5d7a96a76f797c3d19",
+   "used_in_film": false
   },
   {
    "file": "metal-tap-b.wav",
@@ -116,7 +442,8 @@
    "duration_s": 1.5,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.0051,
-   "sha256": "3dfdacee0d5c420ac9c09111209e5373fe13ad84b532f192d363a73bb4de42e5"
+   "sha256": "3dfdacee0d5c420ac9c09111209e5373fe13ad84b532f192d363a73bb4de42e5",
+   "used_in_film": false
   },
   {
    "file": "riser.wav",
@@ -125,7 +452,8 @@
    "duration_s": 1.0,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.9872,
-   "sha256": "517eba1b66887309223b45287da44cbd81f14b880af6422f4b17065c3fadf621"
+   "sha256": "517eba1b66887309223b45287da44cbd81f14b880af6422f4b17065c3fadf621",
+   "used_in_film": false
   },
   {
    "file": "impact-deep.wav",
@@ -134,7 +462,8 @@
    "duration_s": 4.2,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.2574,
-   "sha256": "cbb43b74acf7cb48fb0eecc1f76a170641e194367fb77f085d688f14fc030947"
+   "sha256": "cbb43b74acf7cb48fb0eecc1f76a170641e194367fb77f085d688f14fc030947",
+   "used_in_film": false
   },
   {
    "file": "shimmer.wav",
@@ -143,7 +472,8 @@
    "duration_s": 2.3,
    "sample_peak_dbfs": -3.0,
    "rms_peak_time_s": 0.3836,
-   "sha256": "336b8fd8730770685b17df74735e805041eedb392fe3826e82af97a23855fc75"
+   "sha256": "336b8fd8730770685b17df74735e805041eedb392fe3826e82af97a23855fc75",
+   "used_in_film": true
   }
  ]
 }

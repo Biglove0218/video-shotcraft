@@ -18,7 +18,7 @@ for p in json.load(open(probes_path)):
     s = s.astype(np.float64)
     if s.ndim > 1: s = s.mean(axis=1)
     if s_sr != sr: s = resample_poly(s, sr, s_sr)
-    s = s[: int(0.25 * sr)]  # 只用攻击段做探针
+    tr = int(p.get('trimS', 0) * sr); s = s[tr: tr + int(0.25 * sr)]  # 只用（裁入点后的）攻击段做探针
     t0 = p['from'] / FPS
     a = max(0, int((t0 - 0.25) * sr)); b = min(len(y), int((t0 + 0.5) * sr) + len(s))
     seg = y[a:b]

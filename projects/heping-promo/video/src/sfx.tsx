@@ -1,6 +1,7 @@
 // SFX 钉帧表（中央注册表，sound-design §4.1/§4.5/§4.6）。
-// from = 目标峰值帧 − 音源峰值滞后（public/audio/sfx/audio-manifest.json 的 rms_peak_time_s）− 输出音轨偏移。
-// 音源为程序化拟音（analysis/synth_sfx.py）：Freesound 站点对本云端环境返回 403，未能下载实录。
+// from = 目标峰值帧 − (素材内峰值 − 裁入点) − 输出音轨偏移；trimBefore 裁掉素材头部（帧）。
+// 素材：用户从 Freesound 下载上传的实录（文件名保留 Freesound ID 与作者，来源见 public/audio/sfx/FREESOUND-CREDITS.md），
+// 用户未提供的动作保留程序化拟音（analysis/synth_sfx.py）。素材内峰值来自 analysis/fs_onsets.py 与 audio-manifest.json。
 import React from 'react';
 import { Audio, Sequence, staticFile } from 'remotion';
 import manifest from '../public/audio/sfx/audio-manifest.json';
@@ -8,45 +9,69 @@ import { SEAMS, SHOTS, beatF } from './timeline';
 import { T2 } from './shots/S2Flange';
 
 export const OUTPUT_AUDIO_OFFSET_F = (2048 / 48000) * 30; // 1.28f，实测见 timeline.ts / analysis/render-check.json
-const PEAK_F: Record<string, number> = Object.fromEntries(manifest.files.map((m) => [m.file, m.rms_peak_time_s * 30]));
-const sfxFrom = (targetPeakF: number, src: string) => Math.max(0, Math.round(targetPeakF - (PEAK_F[src] ?? 0) - OUTPUT_AUDIO_OFFSET_F));
 
-export type Sfx = { id: string; from: number; src: string; volume: number; durationInFrames?: number; note: string };
+export const FS = {
+  fire: '17556__incarnadine__elements_fire.wav',
+  anvil: '260626__soundeffectspodcast_com__hammer-anvil-hit-1.mp3',
+  shutter: '261098__magedu__camera_shutter_release_dslr.wav',
+  whooshSoft: '364660__original_sound__whoosh-simpler.wav',
+  impact: '377303__meijstroaudio__deep-cinematic-impact.wav',
+  drill: '382962__mattruthsound__drillpress-chuck-spinning-metalic-metal-tool-workshop-2.wav',
+  whooshFast: '530448__mellau__whoosh-short-5.wav',
+  mill: '783833__chungus43a__milling-machine-cutting-metal.wav',
+  lathe: '160545__keykrusher__lathe-atlas-6inch-idling.wav',
+  taps: '855309__gammagool__metal-taps.wav',
+  riser: '859482__beaconstudio__cinematic-riser-3-subtle.wav',
+};
+const SYNTH_PEAK: Record<string, number> = Object.fromEntries(manifest.files.map((m) => [m.file, m.rms_peak_time_s]));
+
+export type Sfx = { id: string; from: number; src: string; volume: number; durationInFrames?: number; trimBefore?: number; note: string };
+
+// cue：target = 画面语义峰值帧；peakS = 素材内峰值（秒）；trimS = 裁入点（秒，按帧取整）
+const cue = (id: string, src: string, target: number, volume: number, note: string, o: { peakS?: number; trimS?: number; dur?: number } = {}): Sfx => {
+  const trimF = Math.round((o.trimS ?? 0) * 30);
+  const peakS = o.peakS ?? SYNTH_PEAK[src] ?? 0;
+  const from = Math.max(0, Math.round(target - (peakS * 30 - trimF) - OUTPUT_AUDIO_OFFSET_F));
+  return { id, src, volume, from, note, durationInFrames: o.dur, trimBefore: trimF || undefined };
+};
 const s2 = (l: number) => SHOTS.s2_flange.from + l;
 
+// 钻孔：钻床素材里两段不同的切入（0.683s / 1.077s 起），交替 + 音量阶梯递减
+const DRILL_CUTS = [{ trimS: 0.666, peakS: 0.70 }, { trimS: 1.066, peakS: 1.09 }];
 const DRILLS: Sfx[] = T2.holes.map((h, i) => {
-  const src = i % 2 === 0 ? 'drill-a.wav' : 'drill-b.wav';
-  return { id: `drill-${i + 1}`, from: sfxFrom(s2(h), src), src, volume: 0.4 - (0.15 * i) / 7, note: `第 ${i + 1} 孔钻穿（双样本交替 + 音量阶梯递减）` };
+  const c = DRILL_CUTS[i % 2];
+  return cue(`drill-${i + 1}`, FS.drill, s2(h), 0.5 - (0.2 * i) / 7, `第 ${i + 1} 孔钻穿`, { ...c, dur: 9 });
 });
+// 金属轻敲：素材每 0.5s 一下，取前三下给三格
+const TAP_AT = [0.021, 0.501, 1.003];
 
 export const SFX: Sfx[] = [
-  { id: 'fire', from: 0, src: 'fire-crackle.wav', volume: 0.32, durationInFrames: SEAMS.leakPeak + 20, note: '开场炉火底噪' },
-  { id: 'stamp', from: sfxFrom(beatF(0), 'anvil-hit.wav'), src: 'anvil-hit.wav', volume: 0.7, note: '印章随锻锤压下（第 0 拍）' },
-  { id: 'leak', from: sfxFrom(SEAMS.leakPeak, 'leak-swell.wav'), src: 'leak-swell.wav', volume: 0.42, note: '琥珀漏光峰值藏切' },
-  { id: 'roar', from: sfxFrom(s2(T2.fill) + 2, 'furnace-roar.wav'), src: 'furnace-roar.wav', volume: 0.5, note: '烧红毛坯成形' },
-  { id: 'lathe', from: s2(T2.lathe) - 3, src: 'lathe-cut.wav', volume: 0.38, durationInFrames: T2.latheEnd - T2.lathe + 12, note: '车削刀线下扫（窗口 = 车削段）' },
+  cue('fire', FS.fire, 0, 2.2, '开场炉火底噪（素材录得轻，峰值 −17.5dB，给 2.2 倍增益）', { peakS: 0, dur: SEAMS.leakPeak + 20 }),
+  cue('stamp', FS.anvil, beatF(0), 0.55, '印章随锻锤压下（第 0 拍）', { peakS: 0.03 }),
+  cue('stamp-ring', 'anvil-hit.wav', beatF(0), 0.2, '锻锤余振（拟音，补足实录 0.68s 的短尾）'),
+  cue('leak', FS.riser, SEAMS.leakPeak, 0.42, '琥珀漏光涌起 → 峰值藏切', { peakS: 2.29 }),
+  cue('roar', 'furnace-roar.wav', s2(T2.fill) + 2, 0.45, '烧红毛坯成形（拟音）'),
+  cue('lathe-hum', FS.lathe, s2(T2.lathe) - 6, 0.9, '车床主轴运转底噪（车削 + 钻孔段）', { peakS: 0, trimS: 1.2, dur: T2.holes[7] - T2.lathe + 26 }),
+  cue('mill', FS.mill, s2(T2.lathe) - 2, 3.0, '车削切削（窗口 = 车削段；素材峰值 −20.7dB，给 3 倍增益）', { peakS: 0, trimS: 0.3, dur: T2.latheEnd - T2.lathe + 12 }),
   ...DRILLS,
-  { id: 'portal', from: sfxFrom(SEAMS.portalStart + 20, 'whoosh-soft.wav'), src: 'whoosh-soft.wav', volume: 0.45, note: '穿过法兰中孔' },
-  { id: 'fling', from: sfxFrom(beatF(24) - 4, 'whoosh-fast.wav'), src: 'whoosh-fast.wav', volume: 0.38, note: '拉杆快甩' },
-  { id: 'fling-tick', from: sfxFrom(beatF(24), 'tick.wav'), src: 'tick.wav', volume: 0.25, note: '拉杆过冲回弹' },
-  { id: 'occluder', from: sfxFrom(SEAMS.occluderCut, 'whoosh-fast.wav'), src: 'whoosh-fast.wav', volume: 0.45, note: '前景遮挡掠过镜头' },
-  ...SEAMS.flashes.map((g, i) => ({ id: `shutter-${i + 1}`, from: sfxFrom(g, 'shutter.wav'), src: 'shutter.wav', volume: 0.75, note: `第 ${i + 1} 闪快门` })),
-  { id: 'whip', from: sfxFrom(SEAMS.whipStart + 4, 'whoosh-fast.wav'), src: 'whoosh-fast.wav', volume: 0.5, note: '竖向甩镜' },
-  ...[0, 1, 2].map((i) => {
-    const src = i === 1 ? 'metal-tap-b.wav' : 'metal-tap-a.wav';
-    return { id: `cell-${i + 1}`, from: sfxFrom(SHOTS.s6_specs.from + 10 + i * 12 + 6, src), src, volume: 0.34 - 0.04 * i, note: `规格第 ${i + 1} 格点亮` };
-  }),
-  { id: 'riser', from: sfxFrom(SEAMS.outroStamp - 1, 'riser.wav'), src: 'riser.wav', volume: 0.4, note: '合影组装铺垫 → 字标' },
-  { id: 'impact', from: sfxFrom(SEAMS.outroStamp, 'impact-deep.wav'), src: 'impact-deep.wav', volume: 0.75, note: '字标压印（第 54 拍）' },
-  { id: 'shimmer', from: sfxFrom(SEAMS.outroStamp + 20, 'shimmer.wav'), src: 'shimmer.wav', volume: 0.18, note: '橙线长出余韵' },
-  { id: 'contact', from: sfxFrom(beatF(58) + 8, 'whoosh-soft.wav'), src: 'whoosh-soft.wav', volume: 0.32, note: '合影 → 联系卡' },
+  cue('portal', FS.whooshSoft, SEAMS.portalStart + 20, 0.45, '穿过法兰中孔', { peakS: 0.12 }),
+  cue('fling', FS.whooshFast, beatF(24) - 6, 0.42, '拉杆快甩', { peakS: 0.2 }),
+  cue('fling-tick', FS.taps, beatF(24), 0.16, '拉杆过冲回弹', { peakS: TAP_AT[0], dur: 12 }),
+  cue('occluder', FS.whooshSoft, SEAMS.occluderCut, 0.5, '前景遮挡掠过镜头', { peakS: 0.12 }),
+  ...SEAMS.flashes.map((g, i) => cue(`shutter-${i + 1}`, FS.shutter, g, 0.9, `第 ${i + 1} 闪快门`, { peakS: 0.181, trimS: 0.15, dur: 18 })),
+  cue('whip', FS.whooshFast, SEAMS.whipStart + 6, 0.55, '竖向甩镜', { peakS: 0.2 }),
+  ...[0, 1, 2].map((i) => cue(`cell-${i + 1}`, FS.taps, SHOTS.s6_specs.from + 10 + i * 12 + 6, 0.34 - 0.04 * i, `规格第 ${i + 1} 格点亮`, { peakS: TAP_AT[i], trimS: Math.round(TAP_AT[i] * 30) / 30, dur: 14 })),
+  cue('riser', FS.riser, SEAMS.outroStamp - 1, 0.45, '合影组装铺垫 → 字标', { peakS: 2.29 }),
+  cue('impact', FS.impact, SEAMS.outroStamp, 0.7, '字标压印（第 54 拍）', { peakS: 0.03 }),
+  cue('shimmer', 'shimmer.wav', SEAMS.outroStamp + 20, 0.15, '橙线长出余韵（拟音）'),
+  cue('contact', FS.whooshSoft, beatF(58) + 8, 0.3, '合影 → 联系卡', { peakS: 0.12 }),
 ];
 
 export const SfxTrack: React.FC = () => (
   <>
     {SFX.map((s) => (
       <Sequence key={s.id} from={s.from} durationInFrames={s.durationInFrames} layout="none">
-        <Audio src={staticFile(`audio/sfx/${s.src}`)} volume={s.volume} />
+        <Audio src={staticFile(`audio/sfx/${s.src}`)} volume={s.volume} trimBefore={s.trimBefore} />
       </Sequence>
     ))}
   </>

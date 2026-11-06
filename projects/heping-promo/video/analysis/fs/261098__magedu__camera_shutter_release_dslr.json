@@ -1,0 +1,13 @@
+{
+  "codec": "pcm_s24le",
+  "sample_rate": 96000,
+  "channels": 1,
+  "duration_seconds": 1.071208,
+  "sample_peak_dbfs": -5.044,
+  "rms_dbfs": -32.634,
+  "energy_window_seconds": 0.01,
+  "energy_peak_seconds": 0.675,
+  "active_start_seconds": 0.07,
+  "active_end_seconds": 1.071208,
+  "activity_threshold_db_below_peak_rms": -40
+}
