@@ -1,0 +1,5 @@
+node_modules/
+# 中间渲染产物（可由 styleframe/shoot.cjs 重新生成）
+styleframe/out/*.png
+styleframe/out/crops.jpg
+styleframe/out/*-small.jpg
