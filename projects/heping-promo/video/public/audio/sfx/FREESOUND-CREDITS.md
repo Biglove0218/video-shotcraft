@@ -2,7 +2,7 @@
 
 ## Freesound 实录（用户下载上传）
 
-> 许可：用户按 Creative Commons 0 筛选下载。制作环境无法访问 Freesound 页面，**请在发布前逐条打开素材页确认许可为 CC0**；若某条为 CC BY，需在发布说明里写上作者署名，若为 BY-NC 则不能用于商用、需替换。
+> 许可：全部为 **Creative Commons 0**（https://creativecommons.org/publicdomain/zero/1.0/），用户于 2026-11-06 在素材页逐条确认。CC0 可免费商用、无需署名；以下作者信息仅作来源记录。
 
 | 文件 | 作者 | 素材页 | 成片中用途 |
 |---|---|---|---|

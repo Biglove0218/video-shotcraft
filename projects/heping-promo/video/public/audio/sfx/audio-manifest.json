@@ -8,7 +8,7 @@
    "author": "benboncan",
    "title": "wheel-lathe",
    "page": "https://freesound.org/s/137950/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": false,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "d9e411fad2866465b73ad152e1376ff2ef41867e2ab20c10b5eb0afaa5d1e569",
@@ -25,7 +25,9 @@
     "active_end_seconds": 72.14,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "160545__keykrusher__lathe-atlas-6inch-idling.wav",
@@ -34,7 +36,7 @@
    "author": "keykrusher",
    "title": "lathe-atlas-6inch-idling",
    "page": "https://freesound.org/s/160545/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "1d7ca8f5dfb2c85dda3bb6b99f0557380cb1c3f4807df8313c5f0baeebe2237e",
@@ -51,7 +53,9 @@
     "active_end_seconds": 45.24,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "17556__incarnadine__elements_fire.wav",
@@ -60,7 +64,7 @@
    "author": "incarnadine",
    "title": "elements_fire",
    "page": "https://freesound.org/s/17556/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "62d84d9c996f4a5f81d108c6a585fe48bbbd6acc6ad26b8ad9dc859c47f96e21",
@@ -77,7 +81,9 @@
     "active_end_seconds": 5.0,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "260626__soundeffectspodcast_com__hammer-anvil-hit-1.mp3",
@@ -86,7 +92,7 @@
    "author": "soundeffectspodcast_com",
    "title": "hammer-anvil-hit-1",
    "page": "https://freesound.org/s/260626/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "2fcd3bd0cfb7fe20403f77447db1921e18fe773139b805fbef6fc218785c38c1",
@@ -103,7 +109,9 @@
     "active_end_seconds": 0.67,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "261098__magedu__camera_shutter_release_dslr.wav",
@@ -112,7 +120,7 @@
    "author": "magedu",
    "title": "camera_shutter_release_dslr",
    "page": "https://freesound.org/s/261098/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "029270f20afe9ef1e66f46bcbeb4ad55f8484e4fec442fcd0d97804a07c6b6f2",
@@ -129,7 +137,9 @@
     "active_end_seconds": 1.071208,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "364660__original_sound__whoosh-simpler.wav",
@@ -138,7 +148,7 @@
    "author": "original_sound",
    "title": "whoosh-simpler",
    "page": "https://freesound.org/s/364660/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "eae05441346cbcb9b500aa150ee70bdba6bc426b862a322fac84dc52990988e8",
@@ -155,7 +165,9 @@
     "active_end_seconds": 1.44,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "377303__meijstroaudio__deep-cinematic-impact.wav",
@@ -164,7 +176,7 @@
    "author": "meijstroaudio",
    "title": "deep-cinematic-impact",
    "page": "https://freesound.org/s/377303/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "f5d36a50eed118c33f8ceb54d28872b350b8c8dfc4a2ec47abb3adeb453f6c25",
@@ -181,7 +193,9 @@
     "active_end_seconds": 1.58,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "382962__mattruthsound__drillpress-chuck-spinning-metalic-metal-tool-workshop-2.wav",
@@ -190,7 +204,7 @@
    "author": "mattruthsound",
    "title": "drillpress-chuck-spinning-metalic-metal-tool-workshop-2",
    "page": "https://freesound.org/s/382962/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "692a22d1be72e29d5754109022e3639db484863a3b3cace07c5709168222de5b",
@@ -207,7 +221,9 @@
     "active_end_seconds": 6.28,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "530448__mellau__whoosh-short-5.wav",
@@ -216,7 +232,7 @@
    "author": "mellau",
    "title": "whoosh-short-5",
    "page": "https://freesound.org/s/530448/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "637beb0496d36de6ef03ad0da9224ea9d26fb37cbfbec804e2a9438a9eff178a",
@@ -233,7 +249,9 @@
     "active_end_seconds": 0.5,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "783833__chungus43a__milling-machine-cutting-metal.wav",
@@ -242,7 +260,7 @@
    "author": "chungus43a",
    "title": "milling-machine-cutting-metal",
    "page": "https://freesound.org/s/783833/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "64275ddb7673358e126d9c8d80fc4e9b9d7a216a5a05e0d6a5ac1b5752329618",
@@ -259,7 +277,9 @@
     "active_end_seconds": 4.8,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "855309__gammagool__metal-taps.wav",
@@ -268,7 +288,7 @@
    "author": "gammagool",
    "title": "metal-taps",
    "page": "https://freesound.org/s/855309/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "7b31479ecdb222e95db0c0502db8d91ef9c5913080fa5a894ee9f9a6d5fda399",
@@ -285,7 +305,9 @@
     "active_end_seconds": 3.72,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   },
   {
    "file": "859482__beaconstudio__cinematic-riser-3-subtle.wav",
@@ -294,7 +316,7 @@
    "author": "beaconstudio",
    "title": "cinematic-riser-3-subtle",
    "page": "https://freesound.org/s/859482/",
-   "license": "用户按 Creative Commons 0 筛选下载；本云端环境无法打开 Freesound 页面核实，待用户确认",
+   "license": "Creative Commons 0",
    "used_in_film": true,
    "kind": "Freesound 下载文件（原文件或预览以用户下载为准）",
    "sha256": "ad30572bcea378b940fa5714094135a32814ed8bad998fb1976d1bb0b7aad81e",
@@ -311,7 +333,9 @@
     "active_end_seconds": 2.35,
     "activity_threshold_db_below_peak_rms": -40
    },
-   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益"
+   "changes": "未改动文件；成片中通过 trimBefore / durationInFrames 裁窗口、volume 调增益",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "license_verification": "用户于 2026-11-06 在素材页确认为 CC0（制作环境无法直接访问 Freesound）"
   }
  ],
  "files": [
