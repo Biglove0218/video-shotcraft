@@ -3,3 +3,5 @@ node_modules/
 styleframe/out/*.png
 styleframe/out/crops.jpg
 styleframe/out/*-small.jpg
+video/out/
+video/.render-public/

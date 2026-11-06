@@ -24,7 +24,7 @@ styleframe：`styleframe/out/方向A.jpg`、`方向B.jpg`、`方向C.jpg`（汇�
 - B「精工冷钢」石墨蓝 #0b1014 + 钢银，工程框线，强调色 #5cb8ff
 - C「由火入钢」（Agent 推荐）毛坯段暖调 → 成品段冷钢，橙色 #ff6a1f 为贯穿品牌色，Noto Sans SC 900 + Barlow Condensed 数字
 
-## 功能到镜头映射 + 分镜（待用户确认）
+## 功能到镜头映射 + 分镜（用户已确认：“可以”）
 
 时长约 31s（930f@30fps），1080×1920；BGM bgm-tech-house.mp3（~124 BPM，分镜确认后做节奏分析，镜头边界吸附拍点）。
 视频号安全区：关键文字保持在 y 160–1600、x 72–1008 内（底部约 300px 留给平台文案/按钮）。
@@ -46,6 +46,39 @@ styleframe：`styleframe/out/方向A.jpg`、`方向B.jpg`、`方向C.jpg`（汇�
 风险是 SwiftShader 软件渲染较慢（逐帧 3D），以静帧逐段验收控制。
 
 交付：带 BGM 版 + 无 BGM 版（保留 SFX）。
+
+## 制作放行版：帧级时间轴（video/src/timeline.ts 为唯一事实源）
+
+BGM：bgm-tech-house.mp3，librosa 网格拟合 124.0 BPM，源 t0 = 0.2633s；成片从第 28 帧起播，第 0 拍 = 第 36 帧（印章落下）。
+`beatF(n) = round((28/30 + 0.2633 + n·0.48384)·30)`。全片 1000f = 33.3s（比分镜预估 31s 多 2.3s：收尾联系卡加长停留便于截图）。
+
+| 镜头 | 帧区间 | 拍点锚 | 镜头卡 · 变体（准确 demo） | 验收帧 |
+|---|---|---|---|---|
+| S1 品牌开场 | 0–123 | 印章 b0=36；漏光峰值 b6=123 | brand-ink-open（demos/typography/brand-ink-open/BrandInkOpen.tsx） | 30, 100 |
+| S1→S2 | 95–166 | 峰值藏切 123 | transition-hidden-cut · light-leak-burn（LightLeakBurn.tsx） | 123 |
+| S2 3D 对焊法兰 | 123–366 | 成形 b8=152；车削 b10–b14=181–239；钻孔 243–286；穿窗 b20=326 | 新写 3D（video/src/three/flange.ts） + 标题 blur-slide | 163, 208, 273, 310 |
+| S2→S3 | 326–366 | 窗 40f | shot-transitions · mask-wipe（PortalWipeV2.tsx） | 335, 350 |
+| S3 平焊法兰 | 326–464 | 快甩过冲顶点 b24=384 | before-after-slider-scrub（BeforeAfterSliderScrub.tsx） | 386, 430 |
+| S3→S4 | 457–471 | 实心核盖满 464 | transition-hidden-cut · invisible-cut（InvisibleCut.tsx） | 464 |
+| S4 毛坯锻件 | 464–622 | 三闪 b32=500 / b33.5=522 / b34.75=540 | beat-cut-moves · paparazzi-flash（PaparazziFlash.tsx） | 485, 506, 600 |
+| S4→S5 | 610–670 | — | shot-transitions · whip-pan（WhipBrakeReal.tsx，竖向） | 628 |
+| S5 一站供应 | 610–712 | — | blur-slide（demos/typography/blur-slide/BlurSlide.tsx） | 690 |
+| S6 规格 | 704–815 | — | wall-reveal-moves · bento-light-up（BentoLightUp.tsx） | 745 |
+| S7 收场 | 791–1000 | 字标压印 b54=820；转联系卡 b58=878 | outro-group-photo-launch（OutroGroupPhotoLaunch.tsx）+ DigitRoll | 805, 858, 960 |
+
+全画面级冲击（≤3 处、间隔 ≥16 拍）：① S4 三连闪（b32，一次手法计一个名额）② S7 字标压印（b54）。
+
+### 制作中相对分镜的偏差（逐条记录理由）
+
+1. **S2 未挂 wireframe-draw-on / sheen-sweep 卡名**：图纸线描与高光由 3D 场景自身实现（SVG 投影线稿 + 真实 3D 高光随环绕运动），
+   避免与 S6 bento-light-up 构成“整墙光效 ×2”（wall-reveal 已知坑：A/B 同片只选一）及 2D 扫光叠加。
+2. **S3→S4 由甩镜改为前景遮挡隐形切；S4→S5 改用甩镜**：S3→S4 若用甩镜，长尾会吃掉 S4 闪前 30f 活素材，无法让首闪落在第 32 拍爆点。
+3. **S3 两版不是同一物体**：毛坯与成品取自照片②同一钢台面、相近机位的两堆法兰（用户无同物前后照）；同卡框、同版式。末段静止约 14f，由遮挡转场接管。
+4. **S4 裁切倍率 1.0 / 1.5 / 2.1**（卡片 2.8）：实拍 1080 宽放到 2.8 倍会糊；HUD 去掉英文相机读数，只留取景框与对焦框。
+5. **S5 由 spotlight-sweep 改为 blur-slide**：全片光效（漏光、车削刀光、逐格描边）已到 light-play 卡“≤2 次”上限。
+6. **S7 收尾不淡出**：原卡末尾熄灯，这里改为联系卡停留 ≥2s 便于截图。
+7. **SFX 为程序化拟音**：Freesound 站点对本云端环境返回 HTTP 403（网络已放行，属站点侧拦截），未下载实录；
+   拟音脚本 video/analysis/synth_sfx.py（固定种子），清单 video/public/audio/sfx/audio-manifest.json。音色未经人耳试听，仅有测量。
 
 ## 重新生成 styleframe
 

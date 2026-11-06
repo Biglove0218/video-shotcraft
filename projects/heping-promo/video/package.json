@@ -1,0 +1,25 @@
+{
+  "name": "heping-promo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts HepingPromo out/promo.mp4",
+    "still": "remotion still src/index.ts HepingPromo"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "5.2.6",
+    "@fontsource/noto-sans-sc": "5.3.1",
+    "@fontsource/noto-serif-sc": "5.3.1",
+    "@remotion/cli": "4.0.484",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "remotion": "4.0.484",
+    "three": "0.187.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.17",
+    "@types/three": "0.187.0",
+    "typescript": "6.0.3"
+  }
+}

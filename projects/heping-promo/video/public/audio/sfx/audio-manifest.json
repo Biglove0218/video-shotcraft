@@ -1,0 +1,149 @@
+{
+ "note": "Freesound 站点对本云端环境返回 403（反爬拦截），按用户确认的分镜动作程序化合成拟音；本地可替换为 Freesound 实录后重测峰值。",
+ "files": [
+  {
+   "file": "fire-crackle.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 5.0,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 2.0158,
+   "sha256": "b3bbc48de7e2fd9e63f9ae8c7975a60bdf0d3bd5683ea9ebfd28fffbdae473c2"
+  },
+  {
+   "file": "anvil-hit.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 3.7,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.0067,
+   "sha256": "272fb24a1dc3dedea2a6a7f492250e95a11ea2fb5c7f3edcf9fbacc6fc9238d1"
+  },
+  {
+   "file": "leak-swell.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 2.6,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.9016,
+   "sha256": "6df433c7ef30b4ec14561a67d2ca13f8ae7cd44ddd60e71fca8f4efe3d9992fc"
+  },
+  {
+   "file": "furnace-roar.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 2.4,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.0616,
+   "sha256": "3fd045fa2aec9ee9ee6df523d310e6e49a0aaeaa1473c644523d7677e55627bf"
+  },
+  {
+   "file": "lathe-cut.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 2.8,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 1.749,
+   "sha256": "1b2920a6508efae68388f174670ced4cebe635380ccd029dfe54bcaff5d91c6a"
+  },
+  {
+   "file": "drill-a.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 0.82,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.255,
+   "sha256": "b28bf370f3f9de87a95fb32bda0d386e66e21fa9afaac49d25d54a150a7b9b46"
+  },
+  {
+   "file": "drill-b.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 0.82,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.255,
+   "sha256": "2f5390d753b284d88bf013a87f19f5b1bebcdde2717ba6f9c1dc10e81271889d"
+  },
+  {
+   "file": "whoosh-fast.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 0.7,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.3905,
+   "sha256": "76666548a51eb5f5c4e8334edac077b0a31c99cf855aa90de672bc1ad79fa955"
+  },
+  {
+   "file": "whoosh-soft.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 1.2,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.7205,
+   "sha256": "234aec11e02344fe0ba09979f978d1b026d764e7cb610aaa761359cec7365854"
+  },
+  {
+   "file": "shutter.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 0.55,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.005,
+   "sha256": "6f2f55b5ffb209c82fce542d6967f651ae1fbc0abe1980d11b72aba349a37083"
+  },
+  {
+   "file": "tick.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 0.12,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.0058,
+   "sha256": "6ead4a47f958f23c99fa06284e5ac53b9994e14b4d2155cf9f5c03b544426444"
+  },
+  {
+   "file": "metal-tap-a.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 1.5,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.0824,
+   "sha256": "470f23e22d334c6dae18639dc3976634e3f4bc1161c43e5d7a96a76f797c3d19"
+  },
+  {
+   "file": "metal-tap-b.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 1.5,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.0051,
+   "sha256": "3dfdacee0d5c420ac9c09111209e5373fe13ad84b532f192d363a73bb4de42e5"
+  },
+  {
+   "file": "riser.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 1.0,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.9872,
+   "sha256": "517eba1b66887309223b45287da44cbd81f14b880af6422f4b17065c3fadf621"
+  },
+  {
+   "file": "impact-deep.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 4.2,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.2574,
+   "sha256": "cbb43b74acf7cb48fb0eecc1f76a170641e194367fb77f085d688f14fc030947"
+  },
+  {
+   "file": "shimmer.wav",
+   "source": "procedural synthesis (analysis/synth_sfx.py, seed 20261106)",
+   "license": "project-original (no third-party audio)",
+   "duration_s": 2.3,
+   "sample_peak_dbfs": -3.0,
+   "rms_peak_time_s": 0.3836,
+   "sha256": "336b8fd8730770685b17df74735e805041eedb392fe3826e82af97a23855fc75"
+  }
+ ]
+}
