@@ -1,0 +1,32 @@
+[
+ {
+  "src": "anvil-hit.wav",
+  "from": 35,
+  "label": "stamp",
+  "target": 36
+ },
+ {
+  "src": "shutter.wav",
+  "from": 499,
+  "label": "shutter1",
+  "target": 500
+ },
+ {
+  "src": "shutter.wav",
+  "from": 521,
+  "label": "shutter2",
+  "target": 522
+ },
+ {
+  "src": "shutter.wav",
+  "from": 539,
+  "label": "shutter3",
+  "target": 540
+ },
+ {
+  "src": "impact-deep.wav",
+  "from": 811,
+  "label": "impact",
+  "target": 820
+ }
+]

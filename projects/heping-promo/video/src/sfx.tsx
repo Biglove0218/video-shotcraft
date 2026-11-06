@@ -7,7 +7,7 @@ import manifest from '../public/audio/sfx/audio-manifest.json';
 import { SEAMS, SHOTS, beatF } from './timeline';
 import { T2 } from './shots/S2Flange';
 
-export const OUTPUT_AUDIO_OFFSET_F = 0; // 渲后交叉相关实测后填写
+export const OUTPUT_AUDIO_OFFSET_F = (2048 / 48000) * 30; // 1.28f，实测见 timeline.ts / analysis/render-check.json
 const PEAK_F: Record<string, number> = Object.fromEntries(manifest.files.map((m) => [m.file, m.rms_peak_time_s * 30]));
 const sfxFrom = (targetPeakF: number, src: string) => Math.max(0, Math.round(targetPeakF - (PEAK_F[src] ?? 0) - OUTPUT_AUDIO_OFFSET_F));
 

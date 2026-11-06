@@ -1,0 +1,79 @@
+{
+ "render_T": 0.4838182266878197,
+ "render_beat0_s": 0.9915354838709685,
+ "design_beat0_s": 1.1966794848241358,
+ "rows": [
+  {
+   "cut": "stamp b0",
+   "design_frame": 36,
+   "measured_beat_frame": 29.75,
+   "err_f": -6.25
+  },
+  {
+   "cut": "leak peak b6",
+   "design_frame": 123,
+   "measured_beat_frame": 116.83,
+   "err_f": -6.17
+  },
+  {
+   "cut": "fill b8",
+   "design_frame": 152,
+   "measured_beat_frame": 145.86,
+   "err_f": -6.14
+  },
+  {
+   "cut": "lathe b10",
+   "design_frame": 181,
+   "measured_beat_frame": 174.89,
+   "err_f": -6.11
+  },
+  {
+   "cut": "portal b20",
+   "design_frame": 326,
+   "measured_beat_frame": 320.04,
+   "err_f": -5.96
+  },
+  {
+   "cut": "fling b24",
+   "design_frame": 384,
+   "measured_beat_frame": 378.1,
+   "err_f": -5.9
+  },
+  {
+   "cut": "flash1 b32",
+   "design_frame": 500,
+   "measured_beat_frame": 494.21,
+   "err_f": -5.79
+  },
+  {
+   "cut": "flash2 b33.5",
+   "design_frame": 522,
+   "measured_beat_frame": 515.98,
+   "err_f": -6.02
+  },
+  {
+   "cut": "flash3 b34.75",
+   "design_frame": 540,
+   "measured_beat_frame": 534.13,
+   "err_f": -5.87
+  },
+  {
+   "cut": "outro b52",
+   "design_frame": 791,
+   "measured_beat_frame": 784.5,
+   "err_f": -6.5
+  },
+  {
+   "cut": "stamp b54",
+   "design_frame": 820,
+   "measured_beat_frame": 813.53,
+   "err_f": -6.47
+  },
+  {
+   "cut": "swap b58",
+   "design_frame": 878,
+   "measured_beat_frame": 871.59,
+   "err_f": -6.41
+  }
+ ]
+}

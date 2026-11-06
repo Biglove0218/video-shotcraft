@@ -4,10 +4,14 @@ export const FPS = 30;
 export const W = 1080;
 export const H = 1920;
 
-export const SOURCE_BEAT0 = 0.2633461514908024; // 源曲第 0 拍（秒）
+// 相位修正（渲后回测发现）：beat_track 在打击成分上锁到了反拍（原 t0=0.2633s）。底鼓（40–160Hz）能量在
+// 原网格半拍处是整拍处的 2 倍（满能量段 1.30 vs 0.69），故真值 = 0.2633 − T/2 = 0.0214s（源曲第一下底鼓）。
+export const SOURCE_BEAT0 = 0.0214231532; // 源曲第 0 拍（秒，底鼓相位）
 export const BEAT_INT = 0.48384479657443435; // 拍长（秒）
-export const BGM_FROM = 28; // BGM 在成片中的起播帧
-export const OUTPUT_AUDIO_OFFSET_SEC = 0; // 渲后回测实测后填写（sound-design §4.6）
+export const BGM_FROM = 34; // BGM 在成片中的起播帧（第 0 拍 = 第 36 帧印章落下）
+// 输出音轨偏移：Remotion 4.0.484 + AAC 48kHz + mp4，2026-11-06 实测 2048 samples = 1.28f
+// （anvil / shutter×3 / impact 交叉相关 + BGM 原文件交叉相关三处一致，见 analysis/render-check.json）
+export const OUTPUT_AUDIO_OFFSET_SEC = 2048 / 48000;
 
 export const beatT = (n: number) => BGM_FROM / FPS + SOURCE_BEAT0 + OUTPUT_AUDIO_OFFSET_SEC + n * BEAT_INT;
 export const beatF = (n: number) => Math.round(beatT(n) * FPS);

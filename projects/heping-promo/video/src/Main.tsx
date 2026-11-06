@@ -7,7 +7,7 @@ import { SfxTrack } from './sfx';
 import { Occluder, SEG_FORGE, SEG_OCCLUDER, SEG_OPEN, SEG_OUTRO, SEG_SLIP, SEG_SPECS, SegForge, SegOpen, SegOutro, SegSlip, SegSpecs } from './segments';
 import { BGM_FROM, TOTAL } from './timeline';
 
-export type MainProps = { bgm: boolean };
+export type MainProps = { bgm: boolean; audioOnly?: boolean };
 
 const At: React.FC<{ seg: { from: number; to: number }; children: React.ReactNode }> = ({ seg, children }) => (
   <Sequence from={seg.from} durationInFrames={seg.to - seg.from}>{children}</Sequence>
@@ -32,9 +32,10 @@ export const Visuals: React.FC = () => (
   </AbsoluteFill>
 );
 
-export const Main: React.FC<MainProps> = ({ bgm }) => (
+// audioOnly：只出音轨（同一时间线的 BGM + SFX 表），用于音频返工时与已渲画面合流，避免重跑 3D 画面
+export const Main: React.FC<MainProps> = ({ bgm, audioOnly }) => (
   <FontGate>
-    <Visuals />
+    {!audioOnly && <Visuals />}
     {bgm && (
       <Sequence from={BGM_FROM}>
         <Audio src={staticFile('audio/bgm/bgm-tech-house.mp3')} volume={(fr) => bgmVolume(fr + BGM_FROM)} />
