@@ -19,6 +19,7 @@ export const BGM_VOLUME = 0.55;
 const DUCKS: [number, number, number][] = [
   [SEAMS.flashes[0] - 3, SEAMS.flashes[2] + 10, 0.6],
   [SHOTS.s6_specs.from + S6_FIRST, SHOTS.s6_specs.from + S6_FIRST + 40, 0.7],
+  [SEAMS.outroStamp - 2, SEAMS.outroStamp + 18, 0.72],
 ];
 const duck = (g: number) => DUCKS.reduce((v, [a, b, k]) => {
   const w = Math.min(1, Math.max(0, Math.min((g - (a - 5)) / 5, ((b + 5) - g) / 5)));

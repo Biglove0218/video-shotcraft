@@ -65,7 +65,7 @@ export const SFX: Sfx[] = [
   cue('shop-amb', FS.lathe, SHOTS.s5_supply.from + 20, 0.45, '一站供应：车间环境声（车床运转，首尾淡入淡出）', { peakS: 0, trimS: 12.0, dur: SHOTS.s5_supply.to - SHOTS.s5_supply.from - 14, fade: 14 }),
   ...[0, 1, 2].map((i) => cue(`cell-${i + 1}`, FS.taps, SHOTS.s6_specs.from + S6_FIRST + i * 12 + 6, 0.6 - 0.08 * i, `规格第 ${i + 1} 格点亮`, { peakS: TAP_AT[i], trimS: Math.round(TAP_AT[i] * 30) / 30, dur: 14 })),
   cue('riser', FS.riser, SEAMS.outroStamp - 1, 0.45, '合影组装铺垫 → 字标', { peakS: 2.29 }),
-  cue('impact', FS.impact, SEAMS.outroStamp, 0.7, '字标压印（第 54 拍）', { peakS: 0.03 }),
+  cue('impact', FS.impact, SEAMS.outroStamp, 0.55, '字标压印（第 56 拍）', { peakS: 0.03 }),
   cue('shimmer', 'shimmer.wav', SEAMS.outroStamp + 20, 0.3, '橙线长出余韵（拟音）'),
   cue('contact', FS.whooshSoft, SEAMS.outroSwap + 8, 0.3, '合影 → 联系卡', { peakS: 0.12 }),
 ];

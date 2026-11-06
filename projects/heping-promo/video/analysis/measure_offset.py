@@ -24,7 +24,7 @@ for p in json.load(open(probes_path)):
     seg = y[a:b]
     c = correlate(seg, s, mode='valid')
     norm = np.sqrt(np.convolve(seg ** 2, np.ones(len(s)), mode='valid')) * np.sqrt(np.sum(s ** 2)) + 1e-9
-    nc = c / norm
+    nc = c / np.maximum(norm, 0.05 * norm.max())  # 静音段能量≈0 时不让归一化爆掉
     k = int(np.argmax(nc))
     measured = (a + k) / sr
     rows.append({**p, 'measured_start_s': round(measured, 5), 'design_start_s': round(t0, 5),

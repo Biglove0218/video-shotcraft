@@ -84,15 +84,7 @@
    "kick_strength": 0.0
   },
   {
-   "cut": "S7 起 b52",
-   "beat": 52,
-   "frame": 791,
-   "heard_frame": 790.81,
-   "err_f": -0.19,
-   "kick_strength": 1.09
-  },
-  {
-   "cut": "字标压印 b54",
+   "cut": "S7 起 b54",
    "beat": 54,
    "frame": 820,
    "heard_frame": 819.93,
@@ -100,12 +92,20 @@
    "kick_strength": 1.32
   },
   {
-   "cut": "转联系卡 b58",
-   "beat": 58,
-   "frame": 878,
-   "heard_frame": 877.85,
-   "err_f": -0.15,
-   "kick_strength": 1.92
+   "cut": "字标压印 b56",
+   "beat": 56,
+   "frame": 849,
+   "heard_frame": 848.73,
+   "err_f": -0.27,
+   "kick_strength": 1.72
+  },
+  {
+   "cut": "转联系卡 b60",
+   "beat": 60,
+   "frame": 907,
+   "heard_frame": 906.97,
+   "err_f": -0.03,
+   "kick_strength": 1.04
   }
  ]
 }

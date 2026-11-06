@@ -3,35 +3,72 @@
   "src": "../../../analysis/anvil-probe.wav",
   "from": 34,
   "trimS": 0.0,
-  "label": "stamp-real",
-  "target": 36
+  "label": "stamp",
+  "target": 36,
+  "peakS": 0.03
  },
  {
   "src": "261098__magedu__camera_shutter_release_dslr.wav",
-  "from": 497,
-  "trimS": 0.13333333333333333,
+  "from": 495,
+  "trimS": 0.2,
   "label": "shutter1",
-  "target": 500
+  "target": 500,
+  "peakS": 0.31
  },
  {
   "src": "261098__magedu__camera_shutter_release_dslr.wav",
-  "from": 519,
-  "trimS": 0.13333333333333333,
+  "from": 517,
+  "trimS": 0.2,
   "label": "shutter2",
-  "target": 522
+  "target": 522,
+  "peakS": 0.31
  },
  {
   "src": "261098__magedu__camera_shutter_release_dslr.wav",
-  "from": 537,
-  "trimS": 0.13333333333333333,
+  "from": 535,
+  "trimS": 0.2,
   "label": "shutter3",
-  "target": 540
+  "target": 540,
+  "peakS": 0.31
+ },
+ {
+  "src": "382962__mattruthsound__drillpress-chuck-spinning-metalic-metal-tool-workshop-2.wav",
+  "from": 240,
+  "trimS": 1.5666666666666667,
+  "label": "drill1",
+  "target": 243,
+  "peakS": 1.61
+ },
+ {
+  "src": "382962__mattruthsound__drillpress-chuck-spinning-metalic-metal-tool-workshop-2.wav",
+  "from": 249,
+  "trimS": 2.1,
+  "label": "drill2",
+  "target": 252,
+  "peakS": 2.155
+ },
+ {
+  "src": "382962__mattruthsound__drillpress-chuck-spinning-metalic-metal-tool-workshop-2.wav",
+  "from": 257,
+  "trimS": 1.5666666666666667,
+  "label": "drill3",
+  "target": 260,
+  "peakS": 1.61
+ },
+ {
+  "src": "382962__mattruthsound__drillpress-chuck-spinning-metalic-metal-tool-workshop-2.wav",
+  "from": 264,
+  "trimS": 2.1,
+  "label": "drill4",
+  "target": 267,
+  "peakS": 2.155
  },
  {
   "src": "377303__meijstroaudio__deep-cinematic-impact.wav",
-  "from": 818,
+  "from": 847,
   "trimS": 0.0,
   "label": "impact",
-  "target": 820
+  "target": 849,
+  "peakS": 0.03
  }
 ]
