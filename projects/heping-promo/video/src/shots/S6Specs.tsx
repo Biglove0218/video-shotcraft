@@ -10,7 +10,7 @@ import { COPY } from '../copy';
 import { Grain, Vignette } from '../lib/polish';
 
 const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const;
-const FIRST = 10;
+export const FIRST = 12; // 原卡 hold 20f，镜头时长受拍点约束压到 12f
 const GAP = 12;
 const CELLS = [
   { x: 72, y: 760, w: 936, h: 300 },

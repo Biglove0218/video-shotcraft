@@ -22,12 +22,12 @@ export const SHOTS = {
   s2_flange: { from: beatF(6), to: beatF(20) + 40 }, // 123–366 3D 对焊法兰（末 40f 为穿窗）
   s3_slip: { from: beatF(20), to: 464 }, // 326–464 平焊法兰 前后拉杆
   s4_forge: { from: 464, to: 622 }, //   464–622 毛坯锻件 三连闪（首闪 = 第 32 拍爆点）
-  s5_supply: { from: 610, to: 712 }, //   610–712 一站供应（甩镜入）
-  s6_specs: { from: 704, to: beatF(52) + 24 }, // 704–815 规格逐格点亮
-  s7_outro: { from: beatF(52), to: 1000 }, // 791–1000 合影 + 联系卡（末段 hold 方便截图）
+  s5_supply: { from: 610, to: 742 }, //   610–742 一站供应（甩镜入；标题落定后停留 ≥1s）
+  s6_specs: { from: 730, to: beatF(54) + 24 }, // 730–844 规格逐格点亮
+  s7_outro: { from: beatF(54), to: 1030 }, // 820–1030 合影 + 联系卡（末段 hold ≥2s 方便截图）
 } as const;
 
-export const TOTAL = 1000;
+export const TOTAL = 1030;
 
 // 接缝（全局帧）
 export const SEAMS = {
@@ -38,8 +38,9 @@ export const SEAMS = {
   occluderCut: 464,
   flashes: [beatF(32), beatF(33.5), beatF(34.75)], // 三连闪：500 / 522 / 540
   whipStart: 610, // S4→S5 竖向甩镜
-  dipStart: 698, // S5→S6 压暗交棒
-  outroStamp: beatF(54), // 字标压印
+  dipStart: 728, // S5→S6 压暗交棒
+  outroStamp: beatF(56), // 字标压印（第 56 拍）
+  outroSwap: beatF(60), // 合影 → 联系卡
 } as const;
 
 export const localF = (shot: { from: number }, globalFrame: number) => globalFrame - shot.from;

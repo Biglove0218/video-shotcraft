@@ -11,7 +11,7 @@ export const COPY = {
   s3Title: '毛坯 → 成品',
   s3Before: '毛坯',
   s3After: '成品',
-  s4Kicker: '毛坯锻件',
+  s4Kicker: '阀门配件 · 毛坯锻件',
   s4Title: ['自由锻', '非标定制'],
   s5Title: ['毛坯成品', '一站供应'],
   s5Sub: '来图加工',

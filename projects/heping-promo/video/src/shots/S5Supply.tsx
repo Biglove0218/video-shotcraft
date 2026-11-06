@@ -8,7 +8,7 @@ import { C, FONT, GRADE } from '../theme';
 import { COPY } from '../copy';
 import { EASE, Grain, Vignette, mix, ramp } from '../lib/polish';
 
-const W0 = 36; // 标题起跑（甩镜长尾基本落定后）
+const W0 = 30; // 标题起跑（甩镜长尾进入阅读区后）
 
 export const S5Supply: React.FC<{ title?: string[]; sub?: string }> = ({ title = COPY.s5Title, sub = COPY.s5Sub }) => {
   const f = useCurrentFrame();

@@ -225,7 +225,7 @@ export function createFlangeScene(canvas: HTMLCanvasElement, W: number, H: numbe
            float ridge = 1.0 - abs(nb * 2.0 - 1.0);
            float vein = smoothstep(0.90, 0.99, ridge); // 氧化皮龟裂缝里透出的炽光
            vec3 heatCol = mix(vec3(0.5,0.04,0.0), vec3(1.0,0.28,0.03), clamp(uHeat,0.0,1.0));
-           totalEmissiveRadiance += heatCol * uHeat * (0.24 + 1.8 * vein);
+           totalEmissiveRadiance += heatCol * uHeat * (0.28 + 1.25 * vein);
            totalEmissiveRadiance += vec3(1.0,0.32,0.05) * exp(-dc*18.0) * 1.2 * uTool + vec3(1.0,0.7,0.35) * exp(-dc*80.0) * 1.8 * uTool;
            totalEmissiveRadiance += vec3(1.0,0.62,0.28) * exp(-df*40.0) * 1.6 * step(uFill, 1.15);`
         : `float dc = abs(vWP.y - uCut);

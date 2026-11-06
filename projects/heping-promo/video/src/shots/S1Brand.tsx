@@ -13,8 +13,8 @@ import { beatF } from '../timeline';
 
 const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const;
 const STAMP = beatF(0); // 36：印章压下
-const NAME0 = STAMP + 6; // 厂名首字
-const SUB0 = NAME0 + 20; // 副标起（与厂名尾字重叠起跑）
+const NAME0 = STAMP + 3; // 厂名首字（7 个汉字：间隔 2.4f、每字 11f，较原卡 3f/12f 压缩，让完整字标在漏光前静止 ≥1s）
+const SUB0 = NAME0 + 15; // 副标起（与厂名尾字重叠起跑）
 
 export const S1Brand: React.FC<{ city?: string; nameLines?: string[]; seal?: string; sub?: string[] }> = ({
   city = COPY.city, nameLines = COPY.nameLines, seal = COPY.seal, sub = COPY.s1Sub,
@@ -36,7 +36,7 @@ export const S1Brand: React.FC<{ city?: string; nameLines?: string[]; seal?: str
   const sealScale = f < STAMP ? 2.2 - 1.2 * sealIn : sealSettle;
   const sealOpacity = interpolate(f, [STAMP - 7, STAMP - 3], [0, 1], clamp);
 
-  const subN = Math.floor(Math.max(0, f - SUB0) / 1.5);
+  const subN = Math.floor(Math.max(0, f - SUB0) / 1.2);
 
   return (
     <AbsoluteFill style={{ background: C.bgWarm, overflow: 'hidden', fontFamily: FONT.sans }}>
@@ -80,9 +80,9 @@ export const S1Brand: React.FC<{ city?: string; nameLines?: string[]; seal?: str
             <div key={li} style={{ display: 'flex' }}>
               {line.split('').map((ch, ci) => {
                 const i = nameLines.slice(0, li).join('').length + ci;
-                const d = NAME0 + i * 3;
-                const t = interpolate(f, [d, d + 12], [0, 1], { ...clamp, easing: Easing.bezier(0.2, 0.7, 0.25, 1) });
-                const glint = interpolate(f, [d + 8, d + 12, d + 16], [0, 1, 0], clamp);
+                const d = NAME0 + i * 2.4;
+                const t = interpolate(f, [d, d + 11], [0, 1], { ...clamp, easing: Easing.bezier(0.2, 0.7, 0.25, 1) });
+                const glint = interpolate(f, [d + 7, d + 11, d + 15], [0, 1, 0], clamp);
                 return (
                   <span key={ci} style={{
                     position: 'relative', display: 'inline-block', opacity: t,
@@ -121,7 +121,7 @@ export const S1Brand: React.FC<{ city?: string; nameLines?: string[]; seal?: str
                 <span>{shown.slice(aLen + nLen)}</span>
                 <span style={{
                   display: 'inline-block', width: 6, height: 52, marginLeft: 8, background: C.ember, alignSelf: 'center',
-                  opacity: f >= SUB0 && (subN < full.length || Math.floor((f - SUB0) / 4) % 2 === 0) && f < SUB0 + full.length * 1.5 + 20 ? 0.9 : 0,
+                  opacity: f >= SUB0 && (subN < full.length || Math.floor((f - SUB0) / 4) % 2 === 0) && f < SUB0 + full.length * 1.2 + 16 ? 0.9 : 0,
                 }} />
               </>
             );

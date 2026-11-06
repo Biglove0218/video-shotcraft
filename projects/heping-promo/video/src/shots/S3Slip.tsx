@@ -48,9 +48,10 @@ export const S3Slip: React.FC<{ kicker?: string; title?: string; before?: string
   kicker = COPY.s3Kicker, title = COPY.s3Title, before = COPY.s3Before, after = COPY.s3After,
 }) => {
   const f = useCurrentFrame();
-  const p = posAt(f);
+  // 镜像：杆位置 = 100 − 原卡位置，成品从右侧揭出，与标题“毛坯 → 成品”同向阅读
+  const p = 100 - posAt(f);
   const x = (p / 100) * CARD.w;
-  const vx = velocity((fr) => (posAt(fr) / 100) * CARD.w, f);
+  const vx = velocity((fr) => ((100 - posAt(fr)) / 100) * CARD.w, f);
   const speed = Math.abs(vx);
   const squish = 1 + Math.min(speed / 110, 1) * 0.18;
   const press = 1 - 0.06 * Math.sin(Math.PI * ramp(f, PRE, FLING_END - PRE, EASE.linear));
@@ -58,7 +59,7 @@ export const S3Slip: React.FC<{ kicker?: string; title?: string; before?: string
   const words = title.split(' ');
   return (
     <AbsoluteFill style={{ background: C.bg, overflow: 'hidden', fontFamily: FONT.sans }}>
-      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 26% at 28% 58%, rgba(90,160,255,0.13), transparent 70%), radial-gradient(ellipse 60% 26% at 76% 58%, rgba(255,90,20,0.16), transparent 70%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 26% at 28% 58%, rgba(255,90,20,0.16), transparent 70%), radial-gradient(ellipse 60% 26% at 76% 58%, rgba(90,160,255,0.13), transparent 70%)' }} />
 
       {/* 标题：blur-slide */}
       <div style={{ position: 'absolute', left: 72, top: 400 }}>
@@ -76,13 +77,13 @@ export const S3Slip: React.FC<{ kicker?: string; title?: string; before?: string
       <div style={{ position: 'absolute', left: CARD.x, top: CARD.y, width: CARD.w, height: CARD.h, borderRadius: CARD.r, overflow: 'hidden', boxShadow: '0 40px 90px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08)' }}>
         {/* before：毛坯（暖） */}
         <Photo src="img/p2-blank.jpg" grade={GRADE.hot} tint={GRADE.tintHot} />
-        <Tag label={before} side="r" color={C.ember} />
-        {/* after：成品（冷），杆左侧揭出 */}
-        <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 ${(CARD.w - x).toFixed(2)}px 0 0)` }}>
+        <Tag label={before} side="l" color={C.ember} />
+        {/* after：成品（冷），杆右侧揭出 */}
+        <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 0 0 ${x.toFixed(2)}px)` }}>
           <Photo src="img/p2-finished.jpg" grade={GRADE.cold} tint={GRADE.tintCold} pos="50% 45%" />
-          <Tag label={after} side="l" color={C.steel} />
+          <Tag label={after} side="r" color={C.steel} />
         </div>
-        <div style={{ position: 'absolute', left: x - 24, top: 0, width: 24, height: CARD.h, background: 'linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.28))' }} />
+        <div style={{ position: 'absolute', left: x, top: 0, width: 24, height: CARD.h, background: 'linear-gradient(90deg, rgba(0,0,0,0.28), rgba(0,0,0,0))' }} />
         <Grain opacity={0.08} blend="soft-light" />
       </div>
 

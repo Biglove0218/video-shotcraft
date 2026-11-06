@@ -47,38 +47,47 @@ styleframe：`styleframe/out/方向A.jpg`、`方向B.jpg`、`方向C.jpg`（汇�
 
 交付：带 BGM 版 + 无 BGM 版（保留 SFX）。
 
-## 制作放行版：帧级时间轴（video/src/timeline.ts 为唯一事实源）
+## 制作放行版：帧级时间轴（video/src/timeline.ts 为唯一事实源；终检后修订版）
 
-BGM：bgm-tech-house.mp3，librosa 网格拟合 124.0 BPM，源 t0 = 0.2633s；成片从第 28 帧起播，第 0 拍 = 第 36 帧（印章落下）。
-`beatF(n) = round((28/30 + 0.2633 + n·0.48384)·30)`。全片 1000f = 33.3s（比分镜预估 31s 多 2.3s：收尾联系卡加长停留便于截图）。
+BGM：bgm-tech-house.mp3，124.0 BPM。**相位以底鼓为准**：源曲第 0 拍 = 0.0214s（初次 librosa 网格 0.2633s 锁在反拍，
+渲后回测发现底鼓能量在其半拍处为整拍处 2 倍，已修正，见 analysis/kick_phase.py）。成片从第 34 帧起播，
+输出音轨偏移实测 2048 samples（1.28f，Remotion 4.0.484 + AAC 48kHz + mp4），单独记账。
+`beatF(n) = round((34/30 + 0.0214 + 2048/48000 + n·0.48384)·30)`，第 0 拍 = 第 36 帧（印章落下）。
+全片 **1030f = 34.3s**（比分镜预估 31s 长：终检要求“一站供应”标题与联系卡各补足停留时间）。
 
 | 镜头 | 帧区间 | 拍点锚 | 镜头卡 · 变体（准确 demo） | 验收帧 |
 |---|---|---|---|---|
-| S1 品牌开场 | 0–123 | 印章 b0=36；漏光峰值 b6=123 | brand-ink-open（demos/typography/brand-ink-open/BrandInkOpen.tsx） | 30, 100 |
+| S1 品牌开场 | 0–123 | 印章 b0=36；漏光峰值 b6=123 | brand-ink-open（BrandInkOpen.tsx） | 40, 98 |
 | S1→S2 | 95–166 | 峰值藏切 123 | transition-hidden-cut · light-leak-burn（LightLeakBurn.tsx） | 123 |
-| S2 3D 对焊法兰 | 123–366 | 成形 b8=152；车削 b10–b14=181–239；钻孔 243–286；穿窗 b20=326 | 新写 3D（video/src/three/flange.ts） + 标题 blur-slide | 163, 208, 273, 310 |
-| S2→S3 | 326–366 | 窗 40f | shot-transitions · mask-wipe（PortalWipeV2.tsx） | 335, 350 |
-| S3 平焊法兰 | 326–464 | 快甩过冲顶点 b24=384 | before-after-slider-scrub（BeforeAfterSliderScrub.tsx） | 386, 430 |
-| S3→S4 | 457–471 | 实心核盖满 464 | transition-hidden-cut · invisible-cut（InvisibleCut.tsx） | 464 |
+| S2 3D 对焊法兰 | 123–366 | 成形 b8=152；车削 b10–b14=181–239；钻孔 243–286；穿窗 b20=326 | 新写 3D（video/src/three/flange.ts）+ 标题 blur-slide | 163, 210, 260, 300 |
+| S2→S3 | 326–366 | 窗 40f | shot-transitions · mask-wipe（PortalWipeV2.tsx） | 340, 350 |
+| S3 平焊法兰 | 326–464 | 快甩过冲顶点 b24=384 | before-after-slider-scrub（BeforeAfterSliderScrub.tsx），镜像：左毛坯 → 右成品 | 386, 430 |
+| S3→S4 | 457–471 | 实心核盖满 464 | transition-hidden-cut · invisible-cut（InvisibleCut.tsx），含切前拖左 / 切后回稳 28px | 464 |
 | S4 毛坯锻件 | 464–622 | 三闪 b32=500 / b33.5=522 / b34.75=540 | beat-cut-moves · paparazzi-flash（PaparazziFlash.tsx） | 485, 506, 600 |
-| S4→S5 | 610–670 | — | shot-transitions · whip-pan（WhipBrakeReal.tsx，竖向） | 628 |
-| S5 一站供应 | 610–712 | — | blur-slide（demos/typography/blur-slide/BlurSlide.tsx） | 690 |
-| S6 规格 | 704–815 | — | wall-reveal-moves · bento-light-up（BentoLightUp.tsx） | 745 |
-| S7 收场 | 791–1000 | 字标压印 b54=820；转联系卡 b58=878 | outro-group-photo-launch（OutroGroupPhotoLaunch.tsx）+ DigitRoll | 805, 858, 960 |
+| S4→S5 | 610–670 | — | shot-transitions · whip-pan（WhipBrakeReal.tsx，竖向） | 628, 645 |
+| S5 一站供应 | 610–742 | — | blur-slide（BlurSlide.tsx） | 690, 720 |
+| S6 规格 | 730–844 | — | wall-reveal-moves · bento-light-up（BentoLightUp.tsx） | 760, 815 |
+| S7 收场 | 820–1030 | 字标压印 b56=849；转联系卡 b60=907 | outro-group-photo-launch（OutroGroupPhotoLaunch.tsx）+ DigitRoll | 830, 890, 1020 |
 
-全画面级冲击（≤3 处、间隔 ≥16 拍）：① S4 三连闪（b32，一次手法计一个名额）② S7 字标压印（b54）。
+全画面级冲击（≤3 处、间隔 ≥16 拍）：① S4 三连闪（b32）② S7 字标压印（b56），间隔 24 拍。
+渲后回测：所有拍点切点与真实底鼓误差 ≤0.5f（analysis/render-check.json），SFX 探针残差 ≤0.5f（analysis/sfx-check.json）。
 
 ### 制作中相对分镜的偏差（逐条记录理由）
 
 1. **S2 未挂 wireframe-draw-on / sheen-sweep 卡名**：图纸线描与高光由 3D 场景自身实现（SVG 投影线稿 + 真实 3D 高光随环绕运动），
-   避免与 S6 bento-light-up 构成“整墙光效 ×2”（wall-reveal 已知坑：A/B 同片只选一）及 2D 扫光叠加。
-2. **S3→S4 由甩镜改为前景遮挡隐形切；S4→S5 改用甩镜**：S3→S4 若用甩镜，长尾会吃掉 S4 闪前 30f 活素材，无法让首闪落在第 32 拍爆点。
-3. **S3 两版不是同一物体**：毛坯与成品取自照片②同一钢台面、相近机位的两堆法兰（用户无同物前后照）；同卡框、同版式。末段静止约 14f，由遮挡转场接管。
+   避免与 S6 bento-light-up 构成“整墙光效 ×2”及 2D 扫光叠加。S2 未单独做“高光 shimmer”音效。
+2. **S3→S4 由甩镜改为前景遮挡隐形切；S4→S5 改用甩镜**：S3→S4 若用甩镜，长尾会吃掉 S4 闪前 30f 活素材，无法让首闪落在第 32 拍。
+3. **S3 是 3:2 对比卡而非满屏；两版不是同一物体**：毛坯与成品取自照片②同一钢台面、相近机位的两堆法兰（用户无同物前后照，且毛坯裁切仅 490×327，满屏会糊）。
+   停顿 14f / 慢扫 40f（卡 18f / 48f，速比 3.3:1 仍 ≥3:1）；末段真静止约 7f 后遮挡物投影入画（卡要求 ≥40f），受第 32 拍爆点约束。
 4. **S4 裁切倍率 1.0 / 1.5 / 2.1**（卡片 2.8）：实拍 1080 宽放到 2.8 倍会糊；HUD 去掉英文相机读数，只留取景框与对焦框。
 5. **S5 由 spotlight-sweep 改为 blur-slide**：全片光效（漏光、车削刀光、逐格描边）已到 light-play 卡“≤2 次”上限。
-6. **S7 收尾不淡出**：原卡末尾熄灯，这里改为联系卡停留 ≥2s 便于截图。
-7. **SFX 为程序化拟音**：Freesound 站点对本云端环境返回 HTTP 403（网络已放行，属站点侧拦截），未下载实录；
-   拟音脚本 video/analysis/synth_sfx.py（固定种子），清单 video/public/audio/sfx/audio-manifest.json。音色未经人耳试听，仅有测量。
+6. **S6 首格 hold 12f**（卡 20f）：镜头时长受拍点约束。
+7. **S7 收尾不淡出**：联系卡停留 ≥2s 便于截图；合影成员补齐 S6 规格代表（“国标 GB”卡）。
+8. **S1 厂名压印 2.4f 间隔 / 11f**（卡 3f / 12f）：7 个汉字，压缩后完整字标在漏光前静止 ≥1s。
+9. **S4 眉标改为“阀门配件 · 毛坯锻件”**：补上简报里的“锻件阀门配件”品类词（照片①即阀门配件毛坯）。
+10. **SFX 来源**：用户从 Freesound 下载上传的 CC0 实录（用户确认许可，清单见 video/public/audio/sfx/FREESOUND-CREDITS.md）为主；
+    用户未提供的“毛坯成形轰燃”“橙线余韵”及锻锤余振层用程序化拟音（video/analysis/synth_sfx.py）。BGM 在三连闪与规格点亮处闪避。
+    音色未经人耳试听，仅有测量。
 
 ## 重新生成 styleframe
 

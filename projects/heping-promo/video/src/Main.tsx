@@ -5,7 +5,8 @@ import { FontGate } from './lib/FontGate';
 import { Grain } from './lib/polish';
 import { SfxTrack } from './sfx';
 import { Occluder, SEG_FORGE, SEG_OCCLUDER, SEG_OPEN, SEG_OUTRO, SEG_SLIP, SEG_SPECS, SegForge, SegOpen, SegOutro, SegSlip, SegSpecs } from './segments';
-import { BGM_FROM, TOTAL } from './timeline';
+import { BGM_FROM, SEAMS, SHOTS, TOTAL } from './timeline';
+import { FIRST as S6_FIRST } from './shots/S6Specs';
 
 export type MainProps = { bgm: boolean; audioOnly?: boolean };
 
@@ -14,10 +15,19 @@ const At: React.FC<{ seg: { from: number; to: number }; children: React.ReactNod
 );
 
 export const BGM_VOLUME = 0.55;
+// 闪避窗口：[起, 止, 压到的倍数]，进出各 5f 线性过渡
+const DUCKS: [number, number, number][] = [
+  [SEAMS.flashes[0] - 3, SEAMS.flashes[2] + 10, 0.6],
+  [SHOTS.s6_specs.from + S6_FIRST, SHOTS.s6_specs.from + S6_FIRST + 40, 0.7],
+];
+const duck = (g: number) => DUCKS.reduce((v, [a, b, k]) => {
+  const w = Math.min(1, Math.max(0, Math.min((g - (a - 5)) / 5, ((b + 5) - g) / 5)));
+  return v * (1 - (1 - k) * w);
+}, 1);
 export const bgmVolume = (g: number) => {
   const fadeIn = interpolate(g, [BGM_FROM, BGM_FROM + 6], [0, 1], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
   const fadeOut = interpolate(g, [TOTAL - 60, TOTAL - 4], [1, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' });
-  return BGM_VOLUME * fadeIn * fadeOut;
+  return BGM_VOLUME * fadeIn * fadeOut * duck(g);
 };
 
 export const Visuals: React.FC = () => (

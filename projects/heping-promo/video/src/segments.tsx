@@ -70,12 +70,20 @@ const Portal: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const cx = mix(b.cx, W / 2, t), cy = mix(b.cy, H / 2, t);
   const rx = mix(b.rx * 0.96, full, t), ry = mix(b.ry * 0.96, full, t);
   const s = mix(0.42, 1, t);
+  const oldDim = 0.3 * ramp(f, 0, 34, EASE.out); // 窗外旧景退暗
   return (
+    <>
+    <AbsoluteFill style={{
+      background: `rgba(4,6,10,${oldDim.toFixed(3)})`,
+      WebkitMaskImage: `radial-gradient(ellipse ${rx.toFixed(1)}px ${ry.toFixed(1)}px at ${cx.toFixed(1)}px ${cy.toFixed(1)}px, transparent 98%, #000 100%)`,
+      maskImage: `radial-gradient(ellipse ${rx.toFixed(1)}px ${ry.toFixed(1)}px at ${cx.toFixed(1)}px ${cy.toFixed(1)}px, transparent 98%, #000 100%)`,
+    }} />
     <AbsoluteFill style={{ clipPath: `ellipse(${rx.toFixed(1)}px ${ry.toFixed(1)}px at ${cx.toFixed(1)}px ${cy.toFixed(1)}px)` }}>
       <AbsoluteFill style={{ transform: `translate(${(cx - W / 2).toFixed(2)}px, ${(cy - H / 2).toFixed(2)}px) scale(${s.toFixed(4)})`, transformOrigin: '50% 50%' }}>
         {children}
       </AbsoluteFill>
     </AbsoluteFill>
+    </>
   );
 };
 
@@ -146,7 +154,11 @@ export const SegOpen: React.FC<{ s1?: P<typeof S1Brand>; s2?: P<typeof S2Flange>
 
 // 片段 2：S3 平焊法兰，从法兰中孔的窗里长出来
 export const SEG_SLIP = { from: SHOTS.s3_slip.from, to: SHOTS.s3_slip.to };
-export const SegSlip: React.FC<P<typeof S3Slip>> = (props) => <Portal><S3Slip {...props} /></Portal>;
+export const SegSlip: React.FC<P<typeof S3Slip>> = (props) => {
+  const g = useCurrentFrame() + SEG_SLIP.from;
+  const drag = -28 * ramp(g, SEAMS.occluderStart, SEAMS.occluderCut - SEAMS.occluderStart, EASE.exit);
+  return <AbsoluteFill style={{ transform: `translateX(${drag.toFixed(2)}px)` }}><Portal><S3Slip {...props} /></Portal></AbsoluteFill>;
+};
 
 // 片段 3：S4 毛坯锻件三连闪 → 竖向甩镜 → S5 一站供应
 export const SEG_FORGE = { from: SHOTS.s4_forge.from, to: SHOTS.s5_supply.to };
@@ -159,7 +171,7 @@ export const SegForge: React.FC<{ s4?: P<typeof S4Forge>; s5?: P<typeof S5Supply
   const s5Fade = 1 - ramp(g, SEAMS.dipStart, 10, EASE.out);
   return (
     <SpeedBlur vx={0} vy={inWhip ? -wv : 0} amount={0.085} max={64}>
-      <AbsoluteFill style={{ transform: `translateY(${(-wy).toFixed(2)}px)` }}>
+      <AbsoluteFill style={{ transform: `translate(${(28 * (1 - ramp(g, SEAMS.occluderCut, 14, EASE.out))).toFixed(2)}px, ${(-wy).toFixed(2)}px)` }}>
         {g < SHOTS.s4_forge.to && (
           <AbsoluteFill><Seq shot={SHOTS.s4_forge} base={base}><S4Forge {...s4} /></Seq></AbsoluteFill>
         )}
@@ -171,7 +183,7 @@ export const SegForge: React.FC<{ s4?: P<typeof S4Forge>; s5?: P<typeof S5Supply
                 filter: i === 0 ? 'grayscale(0.6) brightness(0.45) contrast(1.1)' : 'sepia(0.3) brightness(0.4) contrast(1.15)',
               }} />
             ))}
-            <AbsoluteFill style={{ background: 'linear-gradient(180deg, rgba(11,8,6,0.5), rgba(11,16,20,0.5))' }} />
+            <AbsoluteFill style={{ background: 'linear-gradient(180deg, #0b0806 0%, rgba(11,8,6,0.45) 14%, rgba(11,12,14,0.45) 50%, rgba(8,10,12,0.6) 70%, #04060a 92%)' }} />
           </AbsoluteFill>
         )}
         {g >= SHOTS.s5_supply.from && (

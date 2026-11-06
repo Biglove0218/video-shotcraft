@@ -190,7 +190,7 @@ export const S2Flange: React.FC<{ kicker?: string; steps?: string[] }> = ({ kick
       <canvas ref={ref} width={CANVAS.w} height={CANVAS.h} style={{
         position: 'absolute', left: 0, top: CANVAS.top, width: CANVAS.w, height: CANVAS.h,
         // 炽热期的辉光溢出（廉价 bloom）
-        filter: warm > 0.02 ? `drop-shadow(0 0 ${(18 + 26 * warm).toFixed(1)}px rgba(255,90,20,${(0.75 * warm).toFixed(3)}))` : undefined,
+        filter: warm > 0.02 ? `drop-shadow(0 0 ${(14 + 18 * warm).toFixed(1)}px rgba(255,90,20,${(0.42 * warm).toFixed(3)}))` : undefined,
       }} />
       <Blueprint l={l} st={st} />
       <div style={{ position: 'absolute', left: 72, right: 72, top: 200, opacity: 1 - ramp(l, T2.portal, 16, EASE.out) }}>

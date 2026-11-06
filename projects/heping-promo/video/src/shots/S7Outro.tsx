@@ -18,15 +18,16 @@ const FLY_EASE = Easing.bezier(0.34, 1.4, 0.44, 1);
 const CRANE_EASE = Easing.bezier(0.3, 0, 0.2, 1);
 const L = (g: number) => g - SHOTS.s7_outro.from;
 const STAMP = L(SEAMS.outroStamp); // 29
-const SWAP = L(beatF(58)); // 87：合影 → 联系卡
+const SWAP = L(SEAMS.outroSwap); // 87：合影 → 联系卡
 
-type El = { key: string; src: string; w: number; h: number; cx: number; cy: number; rot: number; dx: number; dy: number; cue: number; grade?: string; tint?: string; bare?: boolean; pos?: string };
+type El = { key: string; src?: string; text?: string; w: number; h: number; cx: number; cy: number; rot: number; dx: number; dy: number; cue: number; grade?: string; tint?: string; bare?: boolean; pos?: string };
 const ELS: El[] = [
   { key: 'fin', src: 'img/p2-finished.jpg', w: 380, h: 260, cx: 268, cy: 520, rot: -5, dx: -520, dy: -60, cue: 4, grade: GRADE.cold, tint: GRADE.tintCold },
   { key: 'flange', src: 'img/flange-finished.png', w: 520, h: 426, cx: 740, cy: 470, rot: 3, dx: 460, dy: -220, cue: 7, bare: true },
   { key: 'blank', src: 'img/p2-blank.jpg', w: 360, h: 240, cx: 800, cy: 1210, rot: -3, dx: 480, dy: 120, cue: 10, grade: GRADE.hot, tint: GRADE.tintHot },
   { key: 'forge', src: 'img/p1.jpg', w: 340, h: 300, cx: 270, cy: 1230, rot: 4, dx: -460, dy: 200, cue: 13, grade: GRADE.hot, tint: GRADE.tintHot, pos: '62% 58%' },
   { key: 'shop', src: 'img/p4.jpg', w: 440, h: 270, cx: 540, cy: 1450, rot: 2, dx: 0, dy: 420, cue: 16, grade: GRADE.cold, tint: GRADE.tintCold, pos: '50% 62%' },
+  { key: 'spec', text: '国标 GB', w: 260, h: 124, cx: 540, cy: 1190, rot: 2, dx: 0, dy: 380, cue: 19 },
 ];
 
 export const S7Outro: React.FC<{ seal?: string; city?: string; name?: string; tags?: string[]; contactLabel?: string; contact?: string; phone?: string; addr?: string[] }> = ({
@@ -92,7 +93,13 @@ export const S7Outro: React.FC<{ seal?: string; city?: string; name?: string; ta
                 opacity: op * (1 - 0.12 * recede), filter: `saturate(${(1 - 0.08 * recede).toFixed(3)})${el.bare ? ' drop-shadow(0 30px 40px rgba(0,0,0,0.6))' : ''}`,
                 border: el.bare ? undefined : '1px solid rgba(255,255,255,0.1)',
               }}>
-                <Img src={staticFile(el.src)} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: el.bare ? 'contain' : 'cover', objectPosition: el.pos ?? '50% 50%', filter: el.grade }} />
+                {el.src ? (
+                  <Img src={staticFile(el.src)} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: el.bare ? 'contain' : 'cover', objectPosition: el.pos ?? '50% 50%', filter: el.grade }} />
+                ) : (
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(170deg, rgba(34,38,44,0.96), rgba(16,18,22,0.96))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 50, color: C.ink }}>
+                    {el.text?.split(' ')[0]}<span style={{ fontFamily: FONT.num, fontWeight: 700, fontSize: 58, color: C.ember, marginLeft: 10 }}>{el.text?.split(' ')[1]}</span>
+                  </div>
+                )}
                 {el.tint && <div style={{ position: 'absolute', inset: 0, background: el.tint, mixBlendMode: 'color' }} />}
               </div>
             </SpeedBlur>
@@ -123,7 +130,7 @@ export const S7Outro: React.FC<{ seal?: string; city?: string; name?: string; ta
             );
           })()}
           <div>
-            <div style={{ fontWeight: 700, fontSize: 44, letterSpacing: 14, color: C.mute, ...bs(STAMP, 12, 12, 6) }}>{city}</div>
+            <div style={{ fontWeight: 700, fontSize: 48, letterSpacing: 14, color: C.mute, ...bs(STAMP, 12, 12, 6) }}>{city}</div>
             <div style={{ display: 'flex', fontWeight: 900, fontSize: 104, lineHeight: 1.12, color: C.ink, textShadow: '0 14px 36px rgba(0,0,0,0.5)' }}>
               {letters.map((ch, i) => {
                 const d = Math.round(STAMP + 4 + i * 1.8);
@@ -157,7 +164,7 @@ export const S7Outro: React.FC<{ seal?: string; city?: string; name?: string; ta
             {contactLabel} <span style={{ color: C.ember }}>{contact}</span>
           </div>
           <div style={{ marginTop: 22, fontWeight: 700, ...bs(contact0 + 8, 14, 20, 6) }}>
-            <DigitRoll value={phone} delay={contact0 + 10} stagger={2} fontSize={160} color={C.ink} fontFamily={FONT.num} />
+            <DigitRoll value={phone} delay={contact0 + 6} stagger={1.5} fontSize={148} color={C.ink} fontFamily={FONT.num} />
           </div>
           <div style={{ marginTop: 40, fontWeight: 500, fontSize: 44, lineHeight: 1.5, color: C.mute, ...bs(contact0 + 18, 20, 26, 9) }}>
             {addr.map((a) => <div key={a}>{a}</div>)}
