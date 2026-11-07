@@ -25,8 +25,8 @@ const ELS: El[] = [
   { key: 'fin', src: 'img/cut/cut-10.png', w: 400, h: 317, cx: 250, cy: 520, rot: -5, dx: -520, dy: -60, cue: 4, bare: true },
   { key: 'flange', src: 'img/cut/cut-11.png', w: 520, h: 468, cx: 740, cy: 470, rot: 3, dx: 460, dy: -220, cue: 7, bare: true },
   { key: 'blank', src: 'img/cut/cut-8.png', w: 380, h: 257, cx: 810, cy: 1220, rot: -3, dx: 480, dy: 120, cue: 10, bare: true },
-  { key: 'forge', src: 'img/p1.jpg', w: 340, h: 300, cx: 270, cy: 1230, rot: 4, dx: -460, dy: 200, cue: 13, grade: GRADE.hot, tint: GRADE.tintHot, pos: '62% 58%' },
-  { key: 'shop', src: 'img/p4.jpg', w: 440, h: 270, cx: 540, cy: 1450, rot: 2, dx: 0, dy: 420, cue: 16, grade: GRADE.cold, tint: GRADE.tintCold, pos: '50% 62%' },
+  { key: 'forge', src: 'img/cut/cut-9.png', w: 360, h: 263, cx: 250, cy: 1240, rot: 4, dx: -460, dy: 200, cue: 13, bare: true },
+  { key: 'shop', src: 'img/cut/cut-7.png', w: 230, h: 335, cx: 540, cy: 1470, rot: 2, dx: 0, dy: 420, cue: 16, bare: true },
   { key: 'spec', text: '国标 GB', w: 260, h: 124, cx: 540, cy: 1190, rot: 2, dx: 0, dy: 380, cue: 19 },
 ];
 
