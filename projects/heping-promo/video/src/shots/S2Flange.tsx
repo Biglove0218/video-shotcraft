@@ -28,7 +28,7 @@ export const portalT = (l: number) => ramp(l, T2.portal, 40, PORTAL_EASE);
 
 // 对焊法兰摆位（成片坐标）。cut-11 裁切后 1150×1034；中孔顶口椭圆在裁切图中心 (549,276)、半轴 (160,150)
 const WN = { cx: 540, cy: 1150, w: 820 };
-const WN_IMG = { w: 1150, h: 1034, bore: { x: 549, y: 276, rx: 160, ry: 150 } };
+const WN_IMG = { w: 1150, h: 1034, bore: { x: 551, y: 292, rx: 136, ry: 124 } }; // 内孔（倒角内沿）实测
 const BLANK = { cx: 540, cy: 1222, w: 860 }; // cut-8 裁切后 1211×819；底边与成品法兰盘底对齐（毛坯带加工余量，略大）
 const wnScale = WN.w / WN_IMG.w;
 const wnBoreScreen = () => ({ x: WN.cx - WN.w / 2 + WN_IMG.bore.x * wnScale, y: WN.cy - (WN_IMG.h * wnScale) / 2 + WN_IMG.bore.y * wnScale });
