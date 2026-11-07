@@ -74,7 +74,10 @@ export const S3Slip: React.FC<{ kicker?: string; title?: string; before?: string
       {/* 对比卡 */}
       <div style={{ position: 'absolute', left: CARD.x, top: CARD.y, width: CARD.w, height: CARD.h, overflow: 'hidden' }}>
         {/* before：毛坯（暖） */}
-        <Product src="img/cut/full-9.png" />
+        {/* 毛坯只留在杆左侧（两张去底图叠放时不能互相透出） */}
+        <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 ${(CARD.w - x).toFixed(2)}px 0 0)` }}>
+          <Product src="img/cut/full-9.png" />
+        </div>
         <Tag label={before} side="l" color={C.ember} />
         {/* after：成品（冷），杆右侧揭出 */}
         <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 0 0 ${x.toFixed(2)}px)` }}>
