@@ -66,20 +66,27 @@ const Portal: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const t = portalT(g - SHOTS.s2_flange.from);
   if (t >= 1) return <AbsoluteFill>{children}</AbsoluteFill>;
   const b = boreEllipse(g);
-  const full = Math.hypot(W / 2, H / 2) * 1.06;
+  const full = Math.hypot(W / 2, H / 2) * 1.12;
   const cx = mix(b.cx, W / 2, t), cy = mix(b.cy, H / 2, t);
   const rx = mix(b.rx * 0.96, full, t), ry = mix(b.ry * 0.96, full, t);
   const s = mix(0.42, 1, t);
-  const oldDim = 0.3 * ramp(f, 0, 34, EASE.out); // 窗外旧景退暗
+  // 柔边窗：羽化宽度随窗变大而变宽（约 6%→14%），没有一刀切的硬边
+  const feather = mix(6, 14, t);
+  const win = (inside: string, outside: string) =>
+    `radial-gradient(ellipse ${rx.toFixed(1)}px ${ry.toFixed(1)}px at ${cx.toFixed(1)}px ${cy.toFixed(1)}px, ${inside} ${(100 - feather).toFixed(1)}%, ${outside} 100%)`;
+  const oldDim = 0.55 * ramp(f, 0, 30, EASE.smooth); // 窗外旧景随穿越渐暗
+  const innerBlur = 7 * (1 - ramp(f, 4, 30, EASE.out)); // 窗内新景由虚到实
+  const innerLift = 1 + 0.25 * Math.sin(Math.PI * t); // 穿越中段一点亮度，像穿过光口
   return (
     <>
-    <AbsoluteFill style={{
-      background: `rgba(4,6,10,${oldDim.toFixed(3)})`,
-      WebkitMaskImage: `radial-gradient(ellipse ${rx.toFixed(1)}px ${ry.toFixed(1)}px at ${cx.toFixed(1)}px ${cy.toFixed(1)}px, transparent 98%, #000 100%)`,
-      maskImage: `radial-gradient(ellipse ${rx.toFixed(1)}px ${ry.toFixed(1)}px at ${cx.toFixed(1)}px ${cy.toFixed(1)}px, transparent 98%, #000 100%)`,
-    }} />
-    <AbsoluteFill style={{ clipPath: `ellipse(${rx.toFixed(1)}px ${ry.toFixed(1)}px at ${cx.toFixed(1)}px ${cy.toFixed(1)}px)` }}>
-      <AbsoluteFill style={{ transform: `translate(${(cx - W / 2).toFixed(2)}px, ${(cy - H / 2).toFixed(2)}px) scale(${s.toFixed(4)})`, transformOrigin: '50% 50%' }}>
+    <AbsoluteFill style={{ background: `rgba(4,6,10,${oldDim.toFixed(3)})`, WebkitMaskImage: win('transparent', '#000'), maskImage: win('transparent', '#000') }} />
+    <AbsoluteFill style={{ WebkitMaskImage: win('#000', 'transparent'), maskImage: win('#000', 'transparent') }}>
+      {/* 窗内底色铺满：缩小中的新景外沿不能露出成矩形 */}
+      <AbsoluteFill style={{ background: '#0a0b0c' }} />
+      <AbsoluteFill style={{
+        transform: `translate(${(cx - W / 2).toFixed(2)}px, ${(cy - H / 2).toFixed(2)}px) scale(${s.toFixed(4)})`, transformOrigin: '50% 50%',
+        filter: `${innerBlur > 0.1 ? `blur(${innerBlur.toFixed(2)}px) ` : ''}brightness(${innerLift.toFixed(3)})`,
+      }}>
         {children}
       </AbsoluteFill>
     </AbsoluteFill>

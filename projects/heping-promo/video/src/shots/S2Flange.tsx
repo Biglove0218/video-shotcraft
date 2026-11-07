@@ -33,7 +33,9 @@ const BLANK = { cx: 540, cy: 1222, w: 860 }; // cut-8 裁切后 1211×819；底�
 const wnScale = WN.w / WN_IMG.w;
 const wnBoreScreen = () => ({ x: WN.cx - WN.w / 2 + WN_IMG.bore.x * wnScale, y: WN.cy - (WN_IMG.h * wnScale) / 2 + WN_IMG.bore.y * wnScale });
 // 穿窗期成品围绕中孔推近
-const pushAt = (l: number) => mix(1, 1.9, portalT(l)) * mix(1, 1.04, ramp(l, T2.turnEnd, T2.portal - T2.turnEnd, EASE.smooth));
+// 一条连续推近：车削完成后起步，穿过穿窗起点时已在加速，中间不停顿（旧版两段缓动在穿窗起点速度归零，读作顿一下）
+const PUSH_EASE = bezier(0.42, 0, 0.3, 1);
+const pushAt = (l: number) => mix(1, 2.3, PUSH_EASE(Math.min(1, Math.max(0, (l - (T2.turnEnd + 6)) / (T2.portal + 40 - (T2.turnEnd + 6))))));
 
 export const boreEllipse = (globalFrame: number) => {
   const l = L(globalFrame);
@@ -102,6 +104,7 @@ export const S2Flange: React.FC<{ titleA?: string; titleB?: string; steps?: stri
   const turnP = ramp(l, T2.turnStart, T2.turnEnd - T2.turnStart, EASE.swift);
   const deg = turnP * 360;
   const push = pushAt(l);
+  const zoomBlur = Math.min(5, Math.max(0, (pushAt(l + 0.5) - pushAt(l - 0.5)) * 90)); // 推得越快越糊
   const bore = wnBoreScreen();
   const pt = portalT(l);
 
@@ -145,7 +148,7 @@ export const S2Flange: React.FC<{ titleA?: string; titleB?: string; steps?: stri
 
       {/* ③ 对焊法兰：毛坯 → 精车成品（环形扫掠） */}
       {wnIn > 0 && (
-        <div style={{ position: 'absolute', inset: 0, opacity: wnIn, transform: `translateY(${((1 - wnIn) * 40).toFixed(2)}px) scale(${push.toFixed(4)})`, transformOrigin: `${bore.x}px ${bore.y}px` }}>
+        <div style={{ position: 'absolute', inset: 0, opacity: wnIn, transform: `translateY(${((1 - wnIn) * 40).toFixed(2)}px) scale(${push.toFixed(4)})`, transformOrigin: `${bore.x}px ${bore.y}px`, filter: zoomBlur > 0.15 ? `blur(${zoomBlur.toFixed(2)}px)` : undefined }}>
           {turnP < 1 && (
             <div style={{ position: 'absolute', inset: 0, WebkitMaskImage: conic(false), maskImage: conic(false) }}>
               <Img src={staticFile('img/cut/cut-8.png')} style={{ position: 'absolute', left: BLANK.cx - BLANK.w / 2, top: BLANK.cy - (BLANK.w * 819 / 1211) / 2, width: BLANK.w, filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.65))' }} />
