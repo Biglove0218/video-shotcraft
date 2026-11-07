@@ -59,9 +59,9 @@ BGM：bgm-tech-house.mp3，124.0 BPM。**相位以底鼓为准**：源曲第 0 �
 |---|---|---|---|---|
 | S1 品牌开场 | 0–123 | 印章 b0=36；漏光峰值 b6=123 | brand-ink-open（BrandInkOpen.tsx） | 40, 98 |
 | S1→S2 | 95–166 | 峰值藏切 123 | transition-hidden-cut · light-leak-burn（LightLeakBurn.tsx） | 123 |
-| S2 3D 对焊法兰 | 123–366 | 成形 b8=152；车削 b10–b14=181–239；钻孔 243–286；穿窗 b20=326 | 新写 3D（video/src/three/flange.ts）+ 标题 blur-slide | 163, 210, 260, 300 |
+| S2 锻造（v3） | 123–366 | 辗环实拍 123–210；红→冷 b12=210–260；对焊毛坯 b16=268；车削环扫 b17–b18.5=283–304；穿窗 b20=326 | 用户素材：辗环机实拍视频 + 去底产品图（photos/v2）；新写 2D 合成 + 标题 blur-slide | 150, 225, 250, 290, 315 |
 | S2→S3 | 326–366 | 窗 40f | shot-transitions · mask-wipe（PortalWipeV2.tsx） | 340, 350 |
-| S3 平焊法兰 | 326–464 | 快甩过冲顶点 b24=384 | before-after-slider-scrub（BeforeAfterSliderScrub.tsx），镜像：左毛坯 → 右成品 | 386, 430 |
+| S3 平焊法兰 | 326–464 | 快甩过冲顶点 b24=384 | before-after-slider-scrub（BeforeAfterSliderScrub.tsx），镜像：左毛坯 → 右成品；v3 改用去底产品图（毛坯 cut-9 → 成品 cut-10，同画布同机位） | 386, 430 |
 | S3→S4 | 457–471 | 实心核盖满 464 | transition-hidden-cut · invisible-cut（InvisibleCut.tsx），含切前拖左 / 切后回稳 28px | 464 |
 | S4 毛坯锻件 | 464–622 | 三闪 b32=500 / b33.5=522 / b34.75=540 | beat-cut-moves · paparazzi-flash（PaparazziFlash.tsx） | 485, 506, 600 |
 | S4→S5 | 610–670 | — | shot-transitions · whip-pan（WhipBrakeReal.tsx，竖向） | 628, 645 |
@@ -71,6 +71,15 @@ BGM：bgm-tech-house.mp3，124.0 BPM。**相位以底鼓为准**：源曲第 0 �
 
 全画面级冲击（≤3 处、间隔 ≥16 拍）：① S4 三连闪（b32）② S7 字标压印（b56），间隔 24 拍。
 渲后回测：所有拍点切点与真实底鼓误差 ≤0.5f（analysis/render-check.json），SFX 探针残差 ≤0.5f（analysis/sfx-check.json）。
+
+### v3 修订（用户 2026-11-07 确认：结构可以，机器为辗环机）
+
+- 用户提供：辗环机实拍视频（红热环件转动）、同角度红热/冷却环件图、带颈毛坯、环形毛坯、成品平焊法兰、成品对焊法兰建模图（白底）。
+- S2 由程序化 3D 法兰改为：辗环实拍（视频原声作现场声）→ 去底环件由红到冷（冷却前沿自上而下扫过，火星与热光随之退去；单张图只做轻微转动与悬浮，真实转动由实拍视频承担）
+  → 对焊毛坯 → 成品（环形扫掠揭示，车床绕轴切削语义，区别于 S3 直线拉杆）→ 由成品中孔穿窗入 S3。文案：辗环锻造 / 对焊法兰；烧红 → 冷却 → 精车。
+- S3 前后对比改为同画布同机位的去底毛坯 / 成品（满足 before-after 卡“同布局同机位”命门，消除 v2 偏差 3 的主要问题）。
+- S7 合影成员换成去底产品图（成品平焊、成品对焊、带颈毛坯）+ 锻件实拍 + 车间实拍 + 国标卡。
+- 去底：rembg isnet-general-use + 孔内白地软键（scratchpad 脚本，产物 photos/v2/cut-*.png）。
 
 ### 制作中相对分镜的偏差（逐条记录理由）
 

@@ -38,12 +38,6 @@ const cue = (id: string, src: string, target: number, volume: number, note: stri
 };
 const s2 = (l: number) => SHOTS.s2_flange.from + l;
 
-// 钻孔：钻床素材里两段不同的切入（0.683s / 1.077s 起），交替 + 音量阶梯递减
-const DRILL_CUTS = [{ trimS: 1.566, peakS: 1.61 }, { trimS: 2.1, peakS: 2.155 }];
-const DRILLS: Sfx[] = T2.holes.map((h, i) => {
-  const c = DRILL_CUTS[i % 2];
-  return cue(`drill-${i + 1}`, FS.drill, s2(h), 1.1 - (0.4 * i) / 7, `第 ${i + 1} 孔钻穿`, { ...c, dur: 8, fade: 3 });
-});
 // 金属轻敲：素材每 0.5s 一下，取前三下给三格
 const TAP_AT = [0.021, 0.501, 1.003];
 
@@ -52,10 +46,11 @@ export const SFX: Sfx[] = [
   cue('stamp', FS.anvil, beatF(0), 0.55, '印章随锻锤压下（第 0 拍）', { peakS: 0.03 }),
   cue('stamp-ring', 'anvil-hit.wav', beatF(0), 0.2, '锻锤余振（拟音，补足实录 0.68s 的短尾）'),
   cue('leak', FS.riser, SEAMS.leakPeak, 0.42, '琥珀漏光涌起 → 峰值藏切', { peakS: 2.29 }),
-  cue('roar', 'furnace-roar.wav', s2(T2.fill) + 2, 0.45, '烧红毛坯成形（拟音）'),
-  cue('lathe-hum', FS.lathe, s2(T2.lathe) - 6, 0.7, '车床主轴运转底噪（车削 + 钻孔段，末 12f 淡出）', { peakS: 0, trimS: 1.2, dur: T2.holes[7] - T2.lathe + 26, fade: 12 }),
-  cue('mill', FS.mill, s2(T2.lathe) - 2, 3.0, '车削切削（窗口 = 车削段；素材峰值 −20.7dB，给 3 倍增益）', { peakS: 0, trimS: 0.3, dur: T2.latheEnd - T2.lathe + 12, fade: 8 }),
-  ...DRILLS,
+  cue('mill-real', 'ring-rolling-mill.wav', SHOTS.s2_flange.from, 0.9, '辗环机实拍现场声（用户视频原声，与画面同一段）', { peakS: 0.5, trimS: 0.5, dur: T2.coolIn + 12, fade: 10 }),
+  cue('roar', 'furnace-roar.wav', s2(T2.coolIn) + 2, 0.32, '红热环件亮相（拟音）'),
+  cue('wn-in', FS.whooshSoft, s2(T2.wnIn) + 4, 0.3, '对焊毛坯入场', { peakS: 0.12 }),
+  cue('lathe-hum', FS.lathe, s2(T2.turnStart) - 8, 0.6, '车床运转底噪（车削段，末 10f 淡出）', { peakS: 0, trimS: 1.2, dur: T2.turnEnd - T2.turnStart + 26, fade: 10 }),
+  cue('mill', FS.mill, s2(T2.turnStart) - 1, 3.0, '车削切削（环形扫掠段；素材峰值 −20.7dB，给 3 倍增益）', { peakS: 0, trimS: 0.3, dur: T2.turnEnd - T2.turnStart + 8, fade: 6 }),
   cue('portal', FS.whooshSoft, SEAMS.portalStart + 20, 0.45, '穿过法兰中孔', { peakS: 0.12 }),
   cue('fling', FS.whooshFast, beatF(24) - 6, 0.42, '拉杆快甩', { peakS: 0.26 }),
   cue('fling-tick', FS.taps, beatF(24), 0.3, '拉杆过冲回弹', { peakS: TAP_AT[0], dur: 12 }),

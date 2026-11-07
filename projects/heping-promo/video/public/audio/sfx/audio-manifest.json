@@ -499,5 +499,13 @@
    "sha256": "336b8fd8730770685b17df74735e805041eedb392fe3826e82af97a23855fc75",
    "used_in_film": true
   }
+ ],
+ "user_media": [
+  {
+   "file": "ring-rolling-mill.wav",
+   "source": "用户提供的车间实拍视频原声（photos/v2/ring-rolling.mp4）",
+   "license": "用户自有素材",
+   "used_in_film": true
+  }
  ]
 }

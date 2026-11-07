@@ -22,9 +22,9 @@ const SWAP = L(SEAMS.outroSwap); // 87：合影 → 联系卡
 
 type El = { key: string; src?: string; text?: string; w: number; h: number; cx: number; cy: number; rot: number; dx: number; dy: number; cue: number; grade?: string; tint?: string; bare?: boolean; pos?: string };
 const ELS: El[] = [
-  { key: 'fin', src: 'img/p2-finished.jpg', w: 380, h: 260, cx: 268, cy: 520, rot: -5, dx: -520, dy: -60, cue: 4, grade: GRADE.cold, tint: GRADE.tintCold },
-  { key: 'flange', src: 'img/flange-finished.png', w: 520, h: 426, cx: 740, cy: 470, rot: 3, dx: 460, dy: -220, cue: 7, bare: true },
-  { key: 'blank', src: 'img/p2-blank.jpg', w: 360, h: 240, cx: 800, cy: 1210, rot: -3, dx: 480, dy: 120, cue: 10, grade: GRADE.hot, tint: GRADE.tintHot },
+  { key: 'fin', src: 'img/cut/cut-10.png', w: 400, h: 317, cx: 250, cy: 520, rot: -5, dx: -520, dy: -60, cue: 4, bare: true },
+  { key: 'flange', src: 'img/cut/cut-11.png', w: 520, h: 468, cx: 740, cy: 470, rot: 3, dx: 460, dy: -220, cue: 7, bare: true },
+  { key: 'blank', src: 'img/cut/cut-8.png', w: 380, h: 257, cx: 810, cy: 1220, rot: -3, dx: 480, dy: 120, cue: 10, bare: true },
   { key: 'forge', src: 'img/p1.jpg', w: 340, h: 300, cx: 270, cy: 1230, rot: 4, dx: -460, dy: 200, cue: 13, grade: GRADE.hot, tint: GRADE.tintHot, pos: '62% 58%' },
   { key: 'shop', src: 'img/p4.jpg', w: 440, h: 270, cx: 540, cy: 1450, rot: 2, dx: 0, dy: 420, cue: 16, grade: GRADE.cold, tint: GRADE.tintCold, pos: '50% 62%' },
   { key: 'spec', text: '国标 GB', w: 260, h: 124, cx: 540, cy: 1190, rot: 2, dx: 0, dy: 380, cue: 19 },

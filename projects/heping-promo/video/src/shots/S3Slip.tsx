@@ -37,11 +37,9 @@ const Tag: React.FC<{ label: string; side: 'l' | 'r'; color: string }> = ({ labe
   }}>{label}</div>
 );
 
-const Photo: React.FC<{ src: string; grade: string; tint: string; pos?: string }> = ({ src, grade, tint, pos = '50% 50%' }) => (
-  <>
-    <Img src={staticFile(src)} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: pos, filter: grade }} />
-    <div style={{ position: 'absolute', inset: 0, background: tint, mixBlendMode: 'color' }} />
-  </>
+// 去底产品图（用户提供，photos/v2 cut-9 / cut-10：同一 1536×1024 画布、同机位）
+const Product: React.FC<{ src: string }> = ({ src }) => (
+  <Img src={staticFile(src)} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 28px 34px rgba(0,0,0,0.65))' }} />
 );
 
 export const S3Slip: React.FC<{ kicker?: string; title?: string; before?: string; after?: string }> = ({
@@ -74,17 +72,16 @@ export const S3Slip: React.FC<{ kicker?: string; title?: string; before?: string
       </div>
 
       {/* 对比卡 */}
-      <div style={{ position: 'absolute', left: CARD.x, top: CARD.y, width: CARD.w, height: CARD.h, borderRadius: CARD.r, overflow: 'hidden', boxShadow: '0 40px 90px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.08)' }}>
+      <div style={{ position: 'absolute', left: CARD.x, top: CARD.y, width: CARD.w, height: CARD.h, overflow: 'hidden' }}>
         {/* before：毛坯（暖） */}
-        <Photo src="img/p2-blank.jpg" grade={GRADE.hot} tint={GRADE.tintHot} />
+        <Product src="img/cut/full-9.png" />
         <Tag label={before} side="l" color={C.ember} />
         {/* after：成品（冷），杆右侧揭出 */}
         <div style={{ position: 'absolute', inset: 0, clipPath: `inset(0 0 0 ${x.toFixed(2)}px)` }}>
-          <Photo src="img/p2-finished.jpg" grade={GRADE.cold} tint={GRADE.tintCold} pos="50% 45%" />
+          <Product src="img/cut/full-10.png" />
           <Tag label={after} side="r" color={C.steel} />
         </div>
-        <div style={{ position: 'absolute', left: x, top: 0, width: 24, height: CARD.h, background: 'linear-gradient(90deg, rgba(0,0,0,0.28), rgba(0,0,0,0))' }} />
-        <Grain opacity={0.08} blend="soft-light" />
+
       </div>
 
       {/* 分割杆 + 手柄（屏幕层，超出卡上下各 28px） */}

@@ -17,11 +17,11 @@ const withFonts = (el: React.ReactElement) => h(FontGate, null, el);
 
 const OPEN_DEFAULTS = {
   city: COPY.city, name1: COPY.nameLines[0], name2: COPY.nameLines[1], seal: COPY.seal,
-  sub1: COPY.s1Sub[0], years: COPY.s1Sub[1], sub3: COPY.s1Sub[2], s2Kicker: COPY.s2Kicker,
+  sub1: COPY.s1Sub[0], years: COPY.s1Sub[1], sub3: COPY.s1Sub[2], s2TitleA: COPY.s2TitleA, s2TitleB: COPY.s2TitleB,
 };
 const OpenUnit: React.FC<Partial<typeof OPEN_DEFAULTS>> = (p) => {
   const v = { ...OPEN_DEFAULTS, ...p };
-  return withFonts(h(SegOpen, { s1: { city: v.city, nameLines: [v.name1, v.name2], seal: v.seal, sub: [v.sub1, v.years, v.sub3] }, s2: { kicker: v.s2Kicker } }));
+  return withFonts(h(SegOpen, { s1: { city: v.city, nameLines: [v.name1, v.name2], seal: v.seal, sub: [v.sub1, v.years, v.sub3] }, s2: { titleA: v.s2TitleA, titleB: v.s2TitleB } }));
 };
 
 const SLIP_DEFAULTS = { kicker: COPY.s3Kicker, title: COPY.s3Title, before: COPY.s3Before, after: COPY.s3After };
@@ -60,8 +60,8 @@ export const WORKBENCH = {
   total: TOTAL,
   background: '#000000',
   shots: [
-    { id: 'open', label: 'S1 品牌开场 + S2 3D 对焊法兰', from: SEG_OPEN.from, duration: SEG_OPEN.to - SEG_OPEN.from, component: OpenUnit, props: {},
-      schema: schemaOf(OPEN_DEFAULTS, { city: '城市', name1: '厂名第一行', name2: '厂名第二行', seal: '印章字', sub1: '副标前段', years: '年数', sub3: '副标后段', s2Kicker: 'S2 标题' }) },
+    { id: 'open', label: 'S1 品牌开场 + S2 辗环锻造 / 对焊法兰', from: SEG_OPEN.from, duration: SEG_OPEN.to - SEG_OPEN.from, component: OpenUnit, props: {},
+      schema: schemaOf(OPEN_DEFAULTS, { city: '城市', name1: '厂名第一行', name2: '厂名第二行', seal: '印章字', sub1: '副标前段', years: '年数', sub3: '副标后段', s2TitleA: 'S2 标题①（辗环）', s2TitleB: 'S2 标题②（对焊）' }) },
     { id: 'slip', label: 'S3 平焊法兰 毛坯→成品', from: SEG_SLIP.from, duration: SEG_SLIP.to - SEG_SLIP.from, component: SlipUnit, props: {},
       schema: schemaOf(SLIP_DEFAULTS, { kicker: '眉标', title: '标题', before: '左角标(毛坯)', after: '右角标(成品)' }) },
     { id: 'forge', label: 'S4 毛坯锻件三连闪 + S5 一站供应', from: SEG_FORGE.from, duration: SEG_FORGE.to - SEG_FORGE.from, component: ForgeUnit, props: {},
